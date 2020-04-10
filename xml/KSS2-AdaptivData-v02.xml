@@ -1,0 +1,1129 @@
+<!--     ?xml version="1.0" encoding="UTF-8" standalone="no" ?   -->
+
+<!-- zaglavlje fajla, kada je formiran, kada je modifikovan, ko ga je modifikovao   -->
+<!-- FILE_HEADER -->
+<!-- /FILE_HEADER -->
+
+<!-- tip uredjaja, verzija, datum proizvodnje, datum testiranja, datum instalacije, ko, kada, gde  -->
+<!-- KSS_ID -->
+<!-- /KSS_ID -->
+
+<!-- za koju je raskrsnicu namenjen uredjaj/projekat, kada, gde, po osnovu projekta/ugovora, ko ga je projektovao, kada   -->
+<!-- PROJECT_HEADER -->
+<!--/PROJECT_HEADER -->
+
+
+<!-- ******************     strukture za SIGNAL_STAGES   *************************
+
+ struct SFaza						   /*  max broj je 8 */
+ {  
+   uchar     broj;                      /*  broj faze */             
+   uchar     min_h;                     /*  minimalno vreme boravka u fazi  */       
+   uchar     min_l;                     /*  minimalno vreme boravka u fazi  */       
+   uchar     opt_h;                     /*  optimalno vreme boravka u fazi  */   
+   uchar     opt_l;                     /*  optimalno vreme boravka u fazi  */   
+   uchar     max_h;                     /*  maksimalno vreme boravka u fazi */     
+   uchar     max_l;                     /*  maksimalno vreme boravka u fazi */     
+   uchar     boje[4];                   /*  !!!!   ovo bi trebao biti "long"  -  jedan bit -> boja jedne signalne grupe !!!!
+   byte      CRC_faze_h; 
+   byte      CRC_faze_l; 
+ };
+  
+   faze se upisuju "kontinualno" od pokazivaca na fazi broj jedan. Rezervisana su polja za svh 8 faza, podatak o broju faza se ne cuva u memoriji  ....
+
+ **************     end of strukture za SIGNAL_STAGES   *************************
+
+ **************     strukture za INTERSTAGE_SEQUENCES   *************************
+
+ struct SPrelaz								 /*  max broj je 16 ?????????  */
+ {  
+   uchar             broj_sadasnje;                           
+   uchar             broj_naredne;                           
+   uchar             duzina;                           
+   uchar             toggle[ 32 ];   /* ???!!!???*/    /*  sekunda promene 'boje' */         
+   uchar             CRC_prelaza_h;
+   uchar             CRC_prelaza_l;
+ };
+
+ **********     end of strukture for INTERSTAGE_SEQUENCES   ***********************
+
+
+ **************     strukture for STAGE_CHANGE_PLANS   ****************************
+
+ struct SPlanIzmenaFaza						/*  max broj je 16 - vezuje se za plan tempiranja signalnih planova */
+ {  
+   uchar                  broj_PIFa;         /*  broj plana izmena faza */              
+   uchar                  broj_faza;         /*  broj faza u nizu (ciklusu) max 8 */             
+   uchar                  duzina_cyc;        /*  duzina kvazi ciklusa */             
+   uchar                  start_sec;         /*  startna sekunda */             
+   struct SParametriFaze	 faze[ BR_FAZA_uPIFu ];
+   uchar      CRC_PlanIzmena_h; 
+   uchar      CRC_PlanIzmena_l;  
+ };
+
+ **************     end of strukture for STAGE_CHANGE_PLANS   **********************
+
+
+ **************     strukture for DETECTOR DESCRIPTION   ****************************
+                //  za sada nije implementirano u uredjaju //
+
+structure DET_descr
+{
+  uchar detector_description[ 16 ];
+}; 
+
+ **************     end strukture for DETECTOR DESCRIPTION   ****************************
+
+ **************     ADAPTIV_OPERATION_VARIABLES              ****************************         
+
+ #define          BR_RAM_LOKACIJA 144           //   sistemske[16]+radne[32]+detektori[32]+zauzece[32]+gap[32]  ->  ukupno 144 memorijske lokacije po 2 bajta
+ uint             RAM[ BR_RAM_LOKACIJA ];   
+
+ **************     ADAPTIV_OPERATION_VARIABLES              ****************************
+
+ **************     strukture for ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES and _FOR_STAGESINTERSTAGES   ****************************
+
+ union U_SA_sledeci
+ {
+ 	uchar tmp[2];
+ 	struct SA_sledeci  sledeci;
+ };
+
+ struct SA_cvor 
+ {
+   uchar                uslov;              
+   uchar                uslov_data;	
+   union Udata_uslova	U;           // uchar  [ 6 ]
+   uchar         	    fun;            
+   uchar                fun_data;	 // uchar  [ 6 ]
+   union Udata_iffun	F;
+   union U_SA_sledeci   u_SA;
+ };
+
+ **************     end of strukture for ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES and _FOR_STAGESINTERSTAGES   **************************** -->
+
+<ADAPTIV_DATA>
+
+	<SIGNAL_STAGES>
+		<!--  FAZE   -->
+
+		<NUMBER_OF_SIGNAL_STAGES> 0 </NUMBER_OF_SIGNAL_STAGES> <!--  MAKSIMALNO 8 FAZA  -->
+
+		<STAGE NO="1">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 1. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="2">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 1. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="3">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 3. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="4">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 4. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="5">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 5. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="6">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 6. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="7">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 7. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+		<STAGE NO="8">
+
+			<STAGE_NUMBER> 0 </STAGE_NUMBER> <!--  parametri 8. stanja     -->
+			<STAGE_DURATION>
+				<min> 0 </min>
+				<opt> 0 </opt>
+				<max> 0 </max>
+			</STAGE_DURATION>
+			<STAGE_COLORS>
+				<!--  "boje" signalnih grupa - ima ih maksimalno 32   -->
+				<collor_of_signal_group NO="01"> 0 </collor_of_signal_group>
+				<collor_of_signal_group NO="02"> 0 </collor_of_signal_group>
+				<!--  ****************************  -->
+				<collor_of_signal_group NO="32"> 0 </collor_of_signal_group>
+			</STAGE_COLORS>
+			<STAGE_CRC> 0 </STAGE_CRC>
+
+		</STAGE>
+
+	</SIGNAL_STAGES>
+
+	<INTERSTAGE_SEQUENCES>
+		<!--  prelazne sekvence   -->
+
+		<NUMBER_OF_INTERSTAGE_SEQUENCES> 0 </NUMBER_OF_INTERSTAGE_SEQUENCES>
+
+		<INTERSTAGE_SEQUENCE NO="01">
+			<!--  1. prelazna sekvenca  -->
+			<CURRENT_STAGE> 0 </CURRENT_STAGE>
+			<NEXT_STAGE> 0 </NEXT_STAGE>
+			<DURATION> 0 </DURATION>
+			<TOGGLE_SECONDS>
+				<toggle_sec NO="01"> 0  </toggle_sec>
+				<toggle_sec NO="02"> 0  </toggle_sec>
+				<!-- ****************** -->
+				<toggle_sec NO="32"> 0  </toggle_sec>
+			</TOGGLE_SECONDS>
+			<INTERSTAGE_SEQUENCE_CRC> 0 </INTERSTAGE_SEQUENCE_CRC>
+		</INTERSTAGE_SEQUENCE>
+
+		<INTERSTAGE_SEQUENCE NO="02">
+			<!--  2. prelazna sekvenca  -->
+			<CURRENT_STAGE> 0 </CURRENT_STAGE>
+			<NEXT_STAGE> 0 </NEXT_STAGE>
+			<DURATION> 0 </DURATION>
+			<TOGGLE_SECONDS>
+				<toggle_sec NO="01"> 0  </toggle_sec>
+				<toggle_sec NO="02"> 0  </toggle_sec>
+				<!-- ****************** -->
+				<toggle_sec NO="32"> 0  </toggle_sec>
+			</TOGGLE_SECONDS>
+			<INTERSTAGE_SEQUENCE_CRC> 0 </INTERSTAGE_SEQUENCE_CRC>
+		</INTERSTAGE_SEQUENCE>
+
+		<!-- ****************** -->
+		--------------------
+		<INTERSTAGE_SEQUENCE NO="56">
+			<!--  56. prelazna sekvenca  -->
+			<CURRENT_STAGE> 0 </CURRENT_STAGE>
+			<NEXT_STAGE> 0 </NEXT_STAGE>
+			<DURATION> 0 </DURATION>
+			<TOGGLE_SECONDS>
+				<toggle_sec NO="01"> 0  </toggle_sec>
+				<toggle_sec NO="02"> 0  </toggle_sec>
+				<!-- ****************** -->
+				<toggle_sec NO="32"> 0  </toggle_sec>
+			</TOGGLE_SECONDS>
+			<INTERSTAGE_SEQUENCE_CRC> 0 </INTERSTAGE_SEQUENCE_CRC>
+		</INTERSTAGE_SEQUENCE>
+
+	</INTERSTAGE_SEQUENCES>
+
+	<STAGE_CHANGE_PLANS>
+		<!-- plan izmena stanja - "PIF"   -->
+
+		<NUMBER_OF_STAGE_CHANGE_PLANS> 0 </NUMBER_OF_STAGE_CHANGE_PLANS>
+
+		<STAGE_CHANGE_PLAN NO="1">
+
+			<STAGE_CHANGE_PLAN_NUMBER> 0 </STAGE_CHANGE_PLAN_NUMBER>
+			<NUMBER_OF_STAGES> 0 </NUMBER_OF_STAGES>
+			<CYCLE> 0 </CYCLE>
+			<START_SECOND> 0 </START_SECOND>
+			<STAGES>
+				<STAGE NO="1">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+				<STAGE NO="2">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+				<!-- ****************** -->
+				<STAGE NO="8">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+			</STAGES>
+			<STAGE_CHANGE_PLAN_CRC> 0 </STAGE_CHANGE_PLAN_CRC>
+
+		</STAGE_CHANGE_PLAN>
+
+		<STAGE_CHANGE_PLAN NO="2">
+
+			<STAGE_CHANGE_PLAN_NUMBER> 0 </STAGE_CHANGE_PLAN_NUMBER>
+			<NUMBER_OF_STAGES> 0 </NUMBER_OF_STAGES>
+			<CYCLE> 0 </CYCLE>
+			<START_SECOND> 0 </START_SECOND>
+			<STAGES>
+				<STAGE NO="1">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+				<STAGE NO="2">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+				<!-- ****************** -->
+				---
+				<STAGE NO="8">
+					<stage_number>	0 </stage_number>
+					<stage_duration> 0 </stage_duration>
+				</STAGE>
+			</STAGES>
+			<STAGE_CHANGE_PLAN_CRC> 0 </STAGE_CHANGE_PLAN_CRC>
+
+		</STAGE_CHANGE_PLAN>
+	</STAGE_CHANGE_PLANS>
+
+	<DETECTORS_CONFIGURATION>
+		<!--  konfiguracija detektora   -->
+
+		<NUMBER_OF_DETECTORS> 0 </NUMBER_OF_DETECTORS>
+
+		<DETECTOR NO="1">
+			<detector_description_1> 0 </detector_description_1>
+			<detector_description_2> 0 </detector_description_2>
+			<!--  *******************************************  -->
+			<detector_description_16> 0 </detector_description_16>
+		</DETECTOR>
+
+		<DETECTOR NO="1">
+			<detector_description_1> 0 </detector_description_1>
+			<detector_description_2> 0 </detector_description_2>
+			<!--  *******************************************  -->
+			<detector_description_16> 0 </detector_description_16>
+		</DETECTOR>
+
+		<!--  **********************************************  -->
+
+		<DETECTOR NO="32">
+			<detector_description_1> 0 </detector_description_1>
+			<detector_description_2> 0 </detector_description_2>
+			<!--  *******************************************  -->
+			<detector_description_16> 0 </detector_description_16>
+		</DETECTOR>
+
+	</DETECTORS_CONFIGURATION>
+
+
+	<ADAPTIV_OPERATION_VARIABLES>
+		<!--  tabela parametara "detektorskog rada"  -->
+
+		<SYSTEM_VARIABLES>
+			<NULA> 0 </NULA>
+			<NONEND> 0 </NONEND>
+			<SECOND> 0 </SECOND>
+			<Tcyc> 0 </Tcyc>
+			<Topt> 0 </Topt>
+			<Tmax> 0 </Tmax>
+			<Tps> 0 </Tps>
+			<EVENT> 0 </EVENT>
+			<VARIABLE NO="09"> 0 </VARIABLE>
+			<VARIABLE NO="10"> 0 </VARIABLE>
+			<!--  ********************  -->
+			<VARIABLE NO="16"> 0 </VARIABLE>
+		</SYSTEM_VARIABLES>
+
+		<TIMEDEPENDET_VARIABLES>
+
+			<VARIABLES NO="1">
+				<SYSTEM>
+					<START_STAGE> 0 </START_STAGE>
+					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+					<CYCLE> 0 </CYCLE>
+					<START_SECOND> 0 </START_SECOND>
+				</SYSTEM>
+				<FREE>
+					<VARIABLE NO="05"> 0 </VARIABLE>
+					<VARIABLE NO="06"> 0 </VARIABLE>
+					<!--  ********************  -->
+					<VARIABLE NO="32"> 0 </VARIABLE>
+				</FREE>
+			</VARIABLES>
+
+			<VARIABLES NO="2">
+				<SYSTEM>
+					<START_STAGE> 0 </START_STAGE>
+					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+					<CYCLE> 0 </CYCLE>
+					<START_SECOND> 0 </START_SECOND>
+				</SYSTEM>
+				<FREE>
+					<VARIABLE NO="05"> 0 </VARIABLE>
+					<VARIABLE NO="06"> 0 </VARIABLE>
+					<!--  ********************  -->
+					<VARIABLE NO="32"> 0 </VARIABLE>
+				</FREE>
+			</VARIABLES>
+
+			<!--  ***************************************  -->
+
+			<VARIABLES NO="16">
+				<SYSTEM>
+					<START_STAGE> 0 </START_STAGE>
+					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+					<CYCLE> 0 </CYCLE>
+					<START_SECOND> 0 </START_SECOND>
+				</SYSTEM>
+				<FREE>
+					<VARIABLE NO="05"> 0 </VARIABLE>
+					<VARIABLE NO="06"> 0 </VARIABLE>
+					<!--  *********************  -->
+					<VARIABLE NO="32"> 0 </VARIABLE>
+				</FREE>
+			</VARIABLES>
+
+		</TIMEDEPENDET_VARIABLES>
+
+	</ADAPTIV_OPERATION_VARIABLES>
+
+
+	<ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES>
+		<!--  algoritmi stanja kod adaprivnog upravljanja  -->
+
+		<NUMBER_OF_STAGES> 0 </NUMBER_OF_STAGES>
+
+		<STAGE NO="1">
+			<!--  algoritmi prvog stanja kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma prvog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, algoritma prvog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, algoritma prvog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_STAGE_ALGORITHM> 0 </CRC_OF_STAGE_ALGORITHM>
+
+		</STAGE>
+
+		<STAGE NO="2">
+			<!--  algoritmi drugog stanja kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma drugog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, algoritma drugog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, algoritma drugog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_STAGE_ALGORITHM> 0 </CRC_OF_STAGE_ALGORITHM>
+
+		</STAGE>
+
+		<!--  ***************************************  -->
+
+		<STAGE NO="8">
+			<!--  algoritmi osmog stanja kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma osmog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, algoritma osmog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, algoritma osmog stanja  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_STAGE_ALGORITHM> 0 </CRC_OF_STAGE_ALGORITHM>
+
+		</STAGE>
+
+		<CRC_OF_ALGORITHMS_FOR_STAGES> 0 </CRC_OF_ALGORITHMS_FOR_STAGES>
+
+	</ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES>
+
+
+	<ADAPTIV_OPERATION_ALGORITHMS_FOR_INTERSTAGES>
+		<!--  algoritmi prelaznih sekvenci kod adaprivnog upravljanja  -->
+
+		<NUMBER_OF_INTERSTAGES> 0 </NUMBER_OF_INTERSTAGES>
+
+		<INTERSTAGE NO="1">
+			<!--  algoritmi prve prelazne sekvence kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma prve prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, prve prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, prve prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_INTERSTAGE_ALGORITHM> 0 </CRC_OF_INTERSTAGE_ALGORITHM>
+
+		</INTERSTAGE>
+
+		<INTERSTAGE NO="2">
+			<!--  algoritmi druge prelazne sekvence kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, algoritma druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, algoritma druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_INTERSTAGE_ALGORITHM> 0 </CRC_OF_INTERSTAGE_ALGORITHM>
+
+		</INTERSTAGE>
+
+		<!--  ***************************************  -->
+
+		<INTERSTAGE NO="32">
+			<!--  algoritmi trideset druge prelazne sekvence kod adaprivnog upravljanja  -->
+
+			<NUMBER_OF_NODES> 0 </NUMBER_OF_NODES>
+
+			<NODE NO="1">
+				<!--  prvi cvor, algoritma trideset druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<NODE NO="2">
+				<!--  drugi cvor, algoritma trideset druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<!--  *****************************  -->
+
+			<NODE NO="32">
+				<!--  trideset drugi cvor, algoritma trideset druge prelazne sekvence  -->
+				<CONDITION_TYPE> 0 </CONDITION_TYPE>
+				<CONDITION_JOKER> 0 </CONDITION_JOKER>
+				<CONDITION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</CONDITION_DATA>
+				<ACTION_TYPE> 0 </ACTION_TYPE>
+				<ACTION_JOKER> 0 </ACTION_JOKER>
+				<ACTION_DATA>
+					<data NO="1"> 0 </data>
+					<data NO="2"> 0 </data>
+					<data NO="3"> 0 </data>
+					<data NO="4"> 0 </data>
+					<data NO="5"> 0 </data>
+					<data NO="6"> 0 </data>
+				</ACTION_DATA>
+				<NEXT_NODE>
+					<true_next> 0 </true_next>
+					<false_next> 0 </false_next>
+					<true_end> 0 </true_end>
+					<false_end> 0 </false_end>
+					<reserve> 0 </reserve>
+				</NEXT_NODE>
+			</NODE>
+
+			<CRC_OF_INTERSTAGE_ALGORITHM> 0 </CRC_OF_INTERSTAGE_ALGORITHM>
+
+		</INTERSTAGE>
+
+		<CRC_OF_ALGORITHMS_FOR_INTERSTAGES> 0 </CRC_OF_ALGORITHMS_FOR_INTERSTAGES>
+
+	</ADAPTIV_OPERATION_ALGORITHMS_FOR_INTERSTAGES>
+
+
+</ADAPTIV_DATA>
+
+<!--  **************   end of file   *************  -->
+
+

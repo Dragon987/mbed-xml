@@ -1,0 +1,796 @@
+<!--     ?xml version="1.0" encoding="UTF-8" standalone="no" ?    -->
+
+<!-- zaglavlje fajla, kada je formiran, kada je modifikovan, ko ga je modifikovao   -->
+<!-- FILE_HEADER --> 	       
+<!-- /FILE_HEADER -->
+
+<!-- tip uredjaja, verzija, datum proizvodnje, datum testiranja, datum instalacije, ko, kada, gde  -->
+<!-- KSS_ID --> 	       
+<!-- /KSS_ID -->
+
+<!-- za koju je raskrsnicu namenjen uredjaj/projekat, kada, gde, po osnovu projekta/ugovora, ko ga je projektovao, kada   -->
+<!-- PROJECT_HEADER -->      
+<!--/PROJECT_HEADER -->  
+
+
+<!-- *************   struktura signalnog plana     ***************
+<!
+<!  #define    NOSIGGR         32
+<!  #define    NOSTOPTACAKA    5
+<!
+<!  struct SSpar        { uchar start, stop; };
+<!  struct SSgrupa      { struct SSpar Spar[NOSIGPAR]; };
+<!  struct SStopTacka   { uchar start, max, skok; };
+<!
+<! struct SSplan
+<! {  
+<!    uchar broj_plana;
+<!    uchar RBC;                   /* ciklus */        
+<!    uchar TPP;                   /* tacka izmene programa */
+<!    uchar REF;                   /* koristi se za offset */
+<!    struct SSgrupa Sgrupe[NOSIGGR];                /* max: 32 sig. grupe */
+<!    struct SStopTacka stop_tacke[NOSTOPTACAKA];    /* max: 5 stop tacaka */
+<!    uchar no_stop_tacaka;                          /* broj koliko ih ima u konkretnom programu */
+<!    uint CRC_plana;  
+<! };
+<!
+<! *************************************************************
+
+
+<! *************   struktura "plana tempiranja"     ***************
+
+<!  #define  BROJ_DANA          7
+<!  #define  BROJ_DATUMA        8
+<!  #define  NODNEVNIHPLANOVA   16
+<!
+<!  struct STparovi
+<!  {  
+<!    uchar sat; 
+<!    uchar minut; 
+<!    uchar broj_plana; 
+<!  };
+<!
+<!  struct STdatum
+<!  {
+<!    uchar dan;
+<!    uchar broj_planova;
+<!    uchar datum;
+<!    uchar mesec;
+<!    uchar godina;
+<!    struct STparovi trojka[NODNEVNIHPLANOVA];
+<!  };
+<!
+<!  struct STdana
+<!  {  
+<!    uchar dan;
+<!    uchar broj_planova;
+<!    struct STparovi trojka[NODNEVNIHPLANOVA];
+<!  };
+<!
+<!  struct STdatumi
+<!  {  
+<!    uchar datum;
+<!    uchar mesec;
+<!  };
+<!
+<!struct STpraznik
+<!{  
+<!  uchar broj_praznika;
+<!  struct STdatumi datum[16];
+<!  struct STparovi planovi[NODNEVNIHPLANOVA];
+<!};
+
+ ************************************************************* -->
+
+<PROGRAM_DATA>
+
+	<SIGNAL_PLANS>	  
+
+	   <NUMBER_OF_SIGNAL_PLANS> 0 </NUMBER_OF_SIGNAL_PLANS>          <!--  MAKSIMALNO 16  -->
+
+	   <SIGNAL_PLAN NO="1"> 
+	   
+		   <RBC> 0 </RBC>
+		   <TPP> 0 </TPP>
+		   <REF> 0 </REF>
+		   
+		   <NUMBER_OF_SIGNAL_GROUPS> 0 </NUMBER_OF_SIGNAL_GROUPS>
+				  
+		   <SIGR NO="1">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>
+			
+		   <SIGR NO="2">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>		   	
+			
+           <!--   *************************************    	-->		
+
+		   <SIGR NO="32"> 
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->	
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>  
+
+		   <STOP_POINTS> 
+		   
+			 <NUMBER_OF_STOP_POINTS> 0 </NUMBER_OF_STOP_POINTS>
+			  
+			 <STOP_POINT NO="1">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="2">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="3">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="4">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="5">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok>  
+			 </STOP_POINT>
+				 
+		   </STOP_POINTS> 
+		  
+		   <SIGNAL_PLAN_CRC> 0 </SIGNAL_PLAN_CRC>
+		   
+	   </SIGNAL_PLAN> 
+	   
+	   <SIGNAL_PLAN NO="2"> 
+	   
+		   <RBC> 0 </RBC>
+		   <TPP> 0 </TPP>
+		   <REF> 0 </REF>
+		   
+		   <NUMBER_OF_SIGNAL_GROUPS> 0 </NUMBER_OF_SIGNAL_GROUPS>
+				  
+		   <SIGR NO="1">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>
+			
+		   <SIGR NO="2">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>		   	
+			
+           <!--   ********************************** --> 			
+
+		   <SIGR NO="32"> 
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->	
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR> 
+
+		   <STOP_POINTS> 
+		   
+			 <NUMBER_OF_STOP_POINTS> 0 </NUMBER_OF_STOP_POINTS>
+			  
+			 <STOP_POINT NO="1">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="2">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="3">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="4">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="5">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok>  
+			 </STOP_POINT>
+				 
+		   </STOP_POINTS> 
+		  
+		   <SIGNAL_PLAN_CRC> 0 </SIGNAL_PLAN_CRC>
+		   
+	   </SIGNAL_PLAN> 
+	   
+	<!--    *********************************************8 -->
+
+	   <SIGNAL_PLAN NO="16"> 
+	   
+		   <RBC> 0 </RBC>
+		   <TPP> 0 </TPP>
+		   <REF> 0 </REF>
+		   
+		   <NUMBER_OF_SIGNAL_GROUPS> 0 </NUMBER_OF_SIGNAL_GROUPS>
+				  
+		   <SIGR NO="1">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>
+			
+		   <SIGR NO="2">
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>		   	
+			
+           <!--   ************************* -->    			
+
+		   <SIGR NO="32"> 
+		      <name1> txt </name1>       <!--  prvo ime signalne grupe -->
+			  <name2> txt </name2>       <!--  drugo ime signalne grupe -->	
+			  <enable> 0 </enable>       <!--  signalna grupa postoji ali se izvrsava "enable=1" ili se ne izvrsava "enable=0"  -->			  
+			  <start1> 0 </start1>       <!--  start green1  -->    
+			  <stop1> 0 </stop1>         <!--  stop green1  -->
+			  <start2> 0  </start2>      <!--  start green2  --> 
+			  <stop2> 0 </stop2>		 <!--  stop green2  -->
+			  <start3> 0  </start3>      <!--  start green3  -->     
+			  <stop3> 0 </stop3>         <!--  stop green2  -->
+		   </SIGR>   
+
+		   <STOP_POINTS> 
+		   
+			 <NUMBER_OF_STOP_POINTS> 0 </NUMBER_OF_STOP_POINTS>
+			  
+			 <STOP_POINT NO="1">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="2">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="3">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="4">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok> 
+			 </STOP_POINT>
+			 
+			 <STOP_POINT NO="5">
+				<start> 0 </start>
+				<max> 0 </max>
+				<skok> 0 </skok>  
+			 </STOP_POINT>
+				 
+		   </STOP_POINTS> 
+		  
+		   <SIGNAL_PLAN_CRC> 0 </SIGNAL_PLAN_CRC>
+		   
+	   </SIGNAL_PLAN> 
+		  
+	</SIGNAL_PLANS>	
+
+	<TIME_TABLE>                                    <!--  plan tempiranja - vremenska tabela ....   -->
+
+	   <TIME_TABLE_DAY>                                            <!--  plan tempiranja - dani   -->
+	   
+		  <DAY NO="1">                                                   <!--  ponedeljak   -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+		 
+		  <DAY NO="2">                                                   <!--  utorak   -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+		  
+		  <DAY NO="3">                                                  <!--   sreda   -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+		  
+		  <DAY NO="4">                                                  <!--  cetvrtak   -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+			 
+		  <DAY NO="5">                                                  <!--   petak   -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+	 
+		  <DAY NO="6">                                                  <!--   subota  -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+		 
+		  <DAY NO="7">                         <!--   nedelja  -->
+			 
+			 <NUMBER_OF_PLANS_PER_DAY> 0 </NUMBER_OF_PLANS_PER_DAY>        <!--   maksimum 16   -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DAY>
+		  
+	   </TIME_TABLE_DAY>
+	  
+	   <TIME_TABLE_HOLLYDAY>                                     <!--   plan tempiranja - dani   -->
+		  
+		  <NUMBER_OF_HOLDAYS> 0 </NUMBER_OF_HOLDAYS>                   <!--   ukupan broj praznika   --> 
+			 
+			 <DATE_OF_HOLIDAY NO="1">           
+				<datum> 0 </datum>
+				<mesec> 0 </mesec>
+			 </DATE_OF_HOLIDAY>  
+			 
+			 <DATE_OF_HOLIDAY NO="2">           
+				<datum> 0 </datum>
+				<mesec> 0 </mesec>
+			 </DATE_OF_HOLIDAY>
+			 
+			 <!-- ************************* -->
+			 
+			 <DATE_OF_HOLIDAY NO="16">           
+				<datum> 0 </datum>
+				<mesec> 0 </mesec>
+			 </DATE_OF_HOLIDAY>
+			 
+			 <NUMBER_OF_PLANS_PER_HOLIDAY> 0 </NUMBER_OF_PLANS_PER_HOLIDAY>       <!--   maksimum 16    -->
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+	   </TIME_TABLE_HOLLYDAY>
+
+	   <TIME_TABLE_DATE>
+		  
+		  <DATE_NUMBER NO="9">                                             <!--  broj specijalnog datuma == 9   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>	 
+
+		  <DATE_NUMBER NO="10">                                             <!--  broj specijalnog datuma == 10   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>	
+
+		  <DATE_NUMBER NO="11">                                             <!--  broj specijalnog datuma == 11   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>	  
+
+		  <DATE_NUMBER NO="12">                                             <!--  broj specijalnog datuma == 12   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>	
+		  
+		  <DATE_NUMBER NO="13">                                             <!--  broj specijalnog datuma == 13   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>
+		  
+		  <DATE_NUMBER NO="14">                                             <!--  broj specijalnog datuma == 14   -->
+			                              
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>
+		  
+		  <DATE_NUMBER NO="15">                                             <!--  broj specijalnog datuma == 15   -->
+			                               
+			 <NUMBER_OF_PLANS_PER_DATE> 0 </NUMBER_OF_PLANS_PER_DATE>                  <!--  maksimum 16   -->
+			 <DATE> 0 </DATE>
+			 <MONTH> 0 </MONTH>
+			 <YEAR> 0 </YEAR>
+			 
+			 <PLAN NO="1">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <PLAN NO="2">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+			 <!-- ************************* -->
+			 
+			 <PLAN NO="16">
+			   <hour> 0 </hour> 
+			   <minut> 0 </minut>
+			   <plan_number> 0 </plan_number>
+			 </PLAN>
+			 
+		  </DATE_NUMBER>
+		  
+	   </TIME_TABLE_DATE>
+
+	</TIME_TABLE>
+
+</PROGRAM_DATA>	
+	

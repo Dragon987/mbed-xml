@@ -1,0 +1,128 @@
+<!--     ?xml version="1.0" encoding="UTF-8" standalone="no" ?    -->
+
+
+<!--  zaglavlje fajla, kada je formiran, kada je modifikovan, ko ga je modifikovao   -->
+<!--  FILE_HEADER --> 	       
+<!--  /FILE_HEADER -->
+
+<!--  tip uredjaja, verzija, datum proizvodnje, datum testiranja, datum instalacije, ko, kada, gde  -->
+<!--  KSS_ID --> 	       
+<!--  /KSS_ID -->
+
+<!--  za koju je raskrsnicu namenjen uredjaj/projekat, kada, gde, po osnovu projekta/ugovora, ko ga je projektovao, kada   -->
+<!--  PROJECT_HEADER -->      
+<!--  /PROJECT_HEADER -->  
+
+
+
+<!--  ****************   strukture podataka za KSS_BIOS_DATA      ********************* -->
+ 
+
+<!-- struct S_konflmode -->
+<!-- {-->
+<!--   uchar pg1 : 2;	/*  modovi podgrupa:  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3 */-->
+<!--   uchar pg2 : 2;-->
+<!--   uchar pg3 : 2;-->
+<!--   uchar pg4 : 2;-->
+
+<!--   uchar vpg1: 1;-->
+<!--   uchar vpg2: 1;-->
+<!--   uchar vpg3: 1;-->
+<!--   uchar vpg4: 1;-->
+
+<!--   uchar glm : 2;	/*   glavni mod:  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3	*/-->
+<!--   uchar glt : 1;-->
+<!--   uchar fl  : 1;-->
+<!-- };-->
+
+<!-- union Ukonflmod-->
+<!-- {-->
+<!--   struct S_konflmode km;-->
+<!--   uchar bytes[sizeof( struct S_konflmode )];-->
+<!-- };-->
+
+
+<!-- struct Sbd -->
+<!-- {-->
+<!--   uchar mod       :2;   /*  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3	*/-->
+<!--   uchar koord_lok :1;    -->
+<!--   uchar fors_tab  :1;    -->
+<!--   uchar v_trep    :1;     -->
+<!--   uchar p_trep    :1;   -->
+<!--   uchar detektor  :1;   -->
+<!--   uchar najava    :1;   -->
+<!-- };-->
+
+<!-- struct SBios_Dinamic -->
+<!-- {-->
+<!--   struct Sbd proc; -->
+<!--   union Ukonflmod knfl;-->
+<!-- };-->
+
+<!-- struct SRestart-->
+<!-- {-->
+<!--  uchar no      : 2;-->
+<!--  uchar time    : 6;-->
+<!--  uchar temp_no    ;	   -->
+<!--  uchar refresh    ;-->
+<!-- }; -->
+
+<!-- struct S_various_flegs-->
+<!-- {-->
+<!-- 	byte CD_demoONOFF_flag: 2;     /* demo CD */-->
+<!-- 	byte setUPDW_flag:      2;     /* odlazak u TEST tokom parametrizacije  */-->
+<!-- 	byte RTCold_flag:       2;     /* RTC koordinacija po starom */-->
+<!-- 	byte Logger_ONOFF:      2;     /* Logger_ONOFF */	-->
+<!-- 	byte reserved1: 		2;     /* rezerva 1 */-->
+<!-- 	byte reserved2:         2;     /* rezerva 2 */-->
+<!-- 	byte reserved3:         2;     /* rezerva 3 */-->
+<!-- 	byte reserved4:         2;     /* rezerva 4 */-->
+<!-- };-->
+
+
+<!--  ****************   end of strukture podataka za CONTROLLER_BIOS      ********************* -->
+ 
+ 
+ 
+<KSS_BIOS_DATA>
+
+   <KSS_BIOS>
+	  <mod> 0 </mod>                                   <!--  mod rada uredaja  -->
+	  <cord_loc> 0 </cord_loc>                         <!--  koordinacija / lokal -->
+	  <fors_table> 0 </fors_table>                     <!--  forsirano / tabela  -->
+	  <vh_fl> 0 </vh_fl>                               <!--  vozacki treptac  -->
+	  <pd_fl> 0 </pd_fl> 							   <!--  pesacki treptac  -->
+	  <adaptive> 0 </adaptive>                         <!--  "detektorski" rad -->
+	  <stages> 0 </stages>                             <!--  rad po fazama -->
+   </KSS_BIOS>
+   <KNF_MODE>
+      <pg1> 0 </pg1>
+	  <pg2> 0 </pg2>
+	  <pg3> 0 </pg3>
+	  <pg4> 0 </pg4>
+	  <vpg1> 0 </vpg1>
+	  <vpg2> 0 </vpg2>
+	  <vpg3> 0 </vpg3>
+	  <vpg4> 0 </vpg4>
+	  <glm> 0 </glm>
+	  <glt> 0 </glt>
+	  <fl> 0 </fl>
+   </KNF_MODE>
+   <VARIOUS_FLAGS>
+      <CD_demoONOFF> 0 </CD_demoONOFF>
+	  <setUPDW> 0 </setUPDW>
+	  <RTCold> 0 </RTCold>
+	  <Logger_ONOFF> 0 </Logger_ONOFF>
+	  <reserved1> 0 </reserved1>
+	  <reserved2> 0 </reserved2>
+	  <reserved3> 0 </reserved3>
+	  <reserved4> 0 </reserved4>
+   </VARIOUS_FLAGS>
+   <RESART>
+	  <nrof_restarts> 0 </nrof_restarts>               <!--  broj restarta  -->
+	  <wait_for_restart> 0 </wait_for_restart>         <!--  cekanje do restarta - interni TMP  -->
+   </RESART>
+		
+</KSS_BIOS_DATA>
+	
+	

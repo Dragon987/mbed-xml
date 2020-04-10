@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.cuh": "hpp",
+        "*.cu": "cpp",
+        "stat.h": "c",
+        "chrono": "cpp",
+        "random": "cpp",
+        "limits": "cpp"
+    }
+}

@@ -1,0 +1,599 @@
+<!--     ?xml version="1.0" encoding="UTF-8" standalone="no" ?    -->
+
+
+<!--  zaglavlje fajla, kada je formiran, kada je modifikovan, ko ga je modifikovao   -->
+<!--  FILE_HEADER --> 	       
+<!--  /FILE_HEADER -->
+
+<!--  tip uredjaja, verzija, datum proizvodnje, datum testiranja, datum instalacije, ko, kada, gde  -->
+<!--  KSS_ID --> 	       
+<!--  /KSS_ID -->
+
+<!--  za koju je raskrsnicu namenjen uredjaj/projekat, kada, gde, po osnovu projekta/ugovora, ko ga je projektovao, kada   -->
+<!--  PROJECT_HEADER -->      
+<!--  /PROJECT_HEADER -->  
+
+
+
+<!--  ****************   strukture podataka za CONTROLLER_CONFIG      ********************* -->
+ 
+<!-- struct SEE_Adrese 
+ {
+   uchar kss_485;           
+   uchar grad;            
+   uchar uredj;  
+   uchar group_adr;            
+ };
+ 
+ struct EEfolder
+ {
+   uchar noSigGr;          /* broj signalnih grupa */
+   uchar noIOadr;          /* broj IO ploca */
+   uchar noCflPr;          /* broj konfliktnih parova */
+   uchar noCrkSij;         /* broj crknutih sijalica koji izazivaju ispad */
+   struct SEE_Adrese adrese;  /*adresa na 485, grad, uredj, grupna_adr */ 
+   uchar e,f;              /* rezervni parametri */
+   uint mGreenTblCRC;      /* CRC tabele minimalnog zelenog       */
+   uint ConflPTblCRC;      /* CRC tabele konflikata               */
+   uint SiGrIOTblCRC;      /* CRC tabele inicijalizacije IO ploca */
+ }; 
+ 
+ struct SStartTimes		  /* startna vremena kontrolera	*/
+ {
+   uchar zuti_treptac;
+   uchar sve_zuto;
+   uchar sve_crveno;
+ };
+
+ struct S_konflmode
+ {
+   uchar pg1 : 2;	/*  modovi podgrupa:  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3 */
+   uchar pg2 : 2;
+   uchar pg3 : 2;
+   uchar pg4 : 2;
+
+   uchar vpg1: 1;
+   uchar vpg2: 1;
+   uchar vpg3: 1;
+   uchar vpg4: 1;
+
+   uchar glm : 2;	/*   glavni mod:  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3	*/
+   uchar glt : 1;
+   uchar fl  : 1;
+ };
+
+ union Ukonflmod
+ {
+   struct S_konflmode km;
+   uchar bytes[sizeof( struct S_konflmode )];
+ };
+
+ struct SPGmod 
+ {
+   uchar gr1;
+   uchar gr2;
+   uchar gr3;
+   uchar gr4;
+ };
+
+ struct Sbd 
+ {
+   uchar mod       :2;   /*  B_MOD_TEST 0   B_MOD_ZT  1	B_MOD_SC  2	 B_MOD_A  3	*/
+   uchar koord_lok :1;    
+   uchar fors_tab  :1;    
+   uchar v_trep    :1;     
+   uchar p_trep    :1;   
+   uchar detektor  :1;   
+   uchar najava    :1;   
+ };
+
+ struct SBios_Dinamic 
+ {
+   struct Sbd proc; 
+   union Ukonflmod knfl;
+ };
+
+ struct SRestart
+ {
+  uchar no      : 2;
+  uchar time    : 6;
+  uchar temp_no    ;	   
+  uchar refresh    ;
+ }; 
+
+ struct SDrerr_byte 
+ { 
+   uchar drerr_pg1: 1;
+   uchar drerr_pg2: 1;
+   uchar drerr_pg3: 1;
+   uchar drerr_pg4: 1;
+   uchar drop:      1;
+   uchar nondrop:   1;
+   uchar prekidac : 2; 
+ };
+
+ struct SErrorCtrl
+ {
+   uchar          brojac_buff;
+   uchar                idle;
+   uchar                idle1;
+ };
+
+ struct SError 
+ { uchar type, address, data; };
+
+ struct SRealTime_
+ { 
+    uchar hour;
+    uchar min;
+    uchar sec;
+    uchar date;
+    uchar month;
+    uchar year; 
+ };
+
+ struct SErrorTime
+ {	
+  struct SError serror;
+  uchar broj_plana;
+  uchar vreme_u_ciklusu;
+  struct SRealTime_ realtime;
+ };
+
+ struct SErrorTimeComm  
+ { 
+   struct SErrorTime       sdrop;	
+   struct SErrorTime    snondrop;	
+   struct SDrerr_byte 	  sflags;
+ };
+
+ #define  PNP_VEL      3
+
+ struct SSPIfolder		   /* zaglavlje podataka u baterijskom ram-u */
+ {
+   uchar brvg;            /* broj vozackih grupa */
+   uchar brtg;            /* broj tramvajskih grupa */
+   uchar brpg;            /* broj pesackih */
+   uchar brstrel;         /* broj strelica */
+   uchar czuto_v;         /* czuto vreme - 2 sek po defaultu */
+   uchar zuto_v;          /* zuto vreme - 3 sek po defaultu */
+   struct SStartTimes start_times;
+   uchar PnP[PNP_VEL];    /* plug and play indetifikacija */
+   
+   /*uchar none;*/
+   uchar zapis_na_minuta;
+  
+   uchar fors_plan;
+   uchar broj_planova;    /* ukupan broj upisanih signalnih planova */ 
+   uchar ispravnost;      /* treba biti 1 aki ima gresaka u kontroleru */
+   uint  CRC_dana;
+   uint  CRC_praznika;
+   uint  CRC_datuma;
+
+   struct SBios_Dinamic  Bios;  
+   //struct SBios_Dinamic  Dinamic; 
+   struct SRestart       Restart;
+
+   struct SErrorTimeComm ErrorTimeComm;
+   struct SErrorCtrl     ErrorCtrl;
+
+   uchar leto_zima;
+   uchar none;
+   
+ }; 
+
+  ****************   end of strukture podataka za CONTROLLER_CONFIG      *********************
+ 
+ 
+  ****************   strukture podataka za CNFLBoard      *********************
+ 
+  struct SSijlelem
+  { 
+     uint sub: 2;     /* zutotreptacka podgrupa */
+     uint sigr: 5;    /* signalna grupa  */
+     uint valid: 1;   /* validnost */
+     uint collor :2;  /* boja leda: 0-mrak, 1-crvena, 2-zelena, 3-zuta */	 
+     uint led :3;     /* redni broj leda: 0-7  */
+     uint osig: 1;    /* osiguranje */
+     uint yell: 1;    /* zuti treptac */
+     uint sign: 1;    /* osvetljenje saogracajnog znaka */  
+  };
+
+  struct SIOSijl  
+  {  
+  	struct SSijlelem sijlelem[6]; 
+  };
+
+
+  struct SConflP
+  { 
+    uchar sigr1;
+    uchar sigr2;
+    uchar ftime :4;     // ????????????????  Za novi uredjaj mora da se definise ceo signed byte da bi mogao da se definise negativan broj MT BL 
+    uchar ltime :4;
+  }; 
+ 
+  **************   end of strukture podataka za CNFLBoard      ******************* -->
+ 
+ 
+<CONFIG_DATA>
+ 
+	<CONTROLLER_CONFIG>                  <!-- KONFIGURACIJA KONTROLERA:   adresa, broj signalnih grupa, broj IO, razna vremena, ...  -->
+
+	   <EEfolder> 
+		  <nr_sg> 0 </nr_sg>       <!-- ukupan broj SG              --> 
+		  <no_IO> 0 </no_IO>       <!-- broj IO modula              -->
+		  <no_CFP> 0 </no_CFP>     <!-- broj konfliktnih parova     -->
+		  <no_FB> 0 </no_FB>       <!-- broj pregorelih sijalica    -->
+		  <EEAdr> 0,0,0,0 </EEAdr> <!-- kss_485, grad, uredjaj, group_adr  -->
+		  <res1> 0 </res1>         <!--  rezerva 1  -->
+		  <res2> 0 </res2>         <!--  rezerva 2  -->
+		  <mGT_CRC> 0 </mGT_CRC>   <!-- CRC tabele minimalnih zelenih vremena  -->
+		  <CFT_CRC> 0 </CFT_CRC>   <!-- CRC tabele konfliktnih vremena  -->
+		  <IOT_CRC> 0 </IOT_CRC>   <!-- CRC tabele inicijalizacije IO ploca  -->
+	   </EEfolder> 
+	   <SIGNAL_GROUPS>   
+		  <nr_vsg> 0 </nr_vsg>     <!-- ukupan broj vozackih SG     -->  
+		  <nr_tsg> 0 </nr_tsg>     <!-- ukupan broj tramvajskih SG  -->  
+		  <nr_psg> 0 </nr_psg>     <!-- ukupan broj pesackih SG     -->  
+		  <nr_asg> 0 </nr_asg>     <!-- ukupan broj SG strelica     -->  
+	   </SIGNAL_GROUPS>
+	   <TRANSIENT_TIMES>
+		  <ry_t> 0 </ry_t>         <!-- red/yellow time  -->
+		  <y_t> 0 </y_t>           <!-- yellow time  -->
+	   </TRANSIENT_TIMES>
+	   <START_TIMES>
+		  <yfl> 0 </yfl>           <!-- yellow flash -->
+		  <y> 0 </y>               <!-- yellow -->
+		  <ar> 0 </ar>             <!-- all red -->
+	   </START_TIMES>
+	   <PLUG_AND_PLAY>
+		  <data> 0,0,0 </data>
+	   </PLUG_AND_PLAY>
+	   <REC_PER_MIN> 0 </REC_PER_MIN>                      <!--  zapis na minuta  -->
+	   <FPLAN_NUMBER> 0 </FPLAN_NUMBER>                    <!--  broj forsiranog signalnog plana  -->
+	   <NROF_SIG_PLANS> 0 </NROF_SIG_PLANS>                <!--  broj signalnih planova  -->
+	   <CORRECT_FLAG> 0 </CORRECT_FLAG>                    <!--  fleg ispravnosti  ?!?!   -->
+	   <TIME_TABLE_CRC>
+		  <day> 0 </day>
+		  <holday> 0 </holday>
+		  <specdate> 0 </specdate>
+	   </TIME_TABLE_CRC>
+	   <BIOS>
+		  <mod> 0 </mod>                                   <!--  mod rada uredaja  -->
+		  <cord_loc> 0 </cord_loc>                         <!--  koordinacija / lokal -->
+		  <fors_table> 0 </fors_table>                     <!--  forsirano / tabela  -->
+		  <vh_fl> 0 </vh_fl>                               <!--  vozacki treptac  -->
+		  <pd_fl> 0 </pd_fl>
+		  <adaptive> 0 </adaptive>                         <!--  "detektorski" rad -->
+		  <stages> 0 </stages>                             <!--  rad po fazama -->
+	   </BIOS>
+	   <RESART>
+		  <nrof_restarts> 0 </nrof_restarts>               <!--  broj restarta  -->
+		  <wait_for_restart> 0 </wait_for_restart>         <!--  cekanje do restarta - interni TMP  -->
+	   </RESART>
+	   <LAST_ERROR>   
+		  <LAST_ERROR_DROP>
+			 <ERROR>
+				<type> 0 </type>
+				<address> 0 </address>
+				<data> 0 </data>
+			 </ERROR>            
+			 <PLAN_NUMBER> 0 </PLAN_NUMBER>
+			 <CYC_SEC> 0 </CYC_SEC>
+			 <ERROR_REAL_TIME> 
+				<hour> 0 </hour>
+				<min> 0 </min>
+				<sec> 0 </sec>
+				<date> 0 </date>
+				<month> 0 </month>
+				<year> 0 </year>
+			 </ERROR_REAL_TIME>     
+		  </LAST_ERROR_DROP> 
+		  <LAST_ERROR_NONDROP>
+			 <ERROR> 0,0,0 </ERROR>
+			 <PLAN_NUMBER> 0 </PLAN_NUMBER>
+			 <CYC_SEC> 0 </CYC_SEC>
+			 <ERROR_REAL_TIME> 
+				<hour> 0 </hour>
+				<min> 0 </min>
+				<sec> 0 </sec>
+				<date> 0 </date>
+				<month> 0 </month>
+				<year> 0 </year>
+			 </ERROR_REAL_TIME> 
+		  </LAST_ERROR_NONDROP>		  
+		  <LAST_ERROR_FLAGS> 
+			 <drerr_pg1> 0 </drerr_pg1>
+			 <drerr_pg2> 0 </drerr_pg2>
+			 <drerr_pg3> 0 </drerr_pg3>
+			 <drerr_pg4> 0 </drerr_pg4>
+			 <drop_flag> 0 </drop_flag>
+			 <nondrop_flag> 0 </nondrop_flag>
+			 <CNFLBoard_mod_switch> 0 </CNFLBoard_mod_switch>
+		  </LAST_ERROR_FLAGS>  
+	   </LAST_ERROR>
+		  <ERROR_BUFFER_CONTROL>
+			  <LAST_ERROR_IN_BUFFER> 0 </LAST_ERROR_IN_BUFFER>
+			  <IDLE>
+				 <idle NO="1"> 0 </idle> 
+				 <idle NO="2"> 0 </idle> 
+			  </IDLE>
+		   </ERROR_BUFFER_CONTROL>
+		   <SUMMER_WINTER> 0 </SUMMER_WINTER>           <!--  fleg leto/zima   -->
+		   <NONE> 0 </NONE>
+		
+	</CONTROLLER_CONFIG>  
+
+	<CNFLBoard_CONFIG> 
+	
+		<IO_MODULES_TABLE>                       <!--  tabela sijalica  --> 
+		
+		  <NUMBER_OF_IO_MODULES> 0 </NUMBER_OF_IO_MODULES> 
+		  
+			  <IO NO="1">                                <!--  1. IO   -->
+				 <OUT NO="1">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="2">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="3">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="4">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>		 
+				 <OUT NO="5">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="6">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+			  </IO>   
+			  <IO NO="2">                                <!--  2. IO   -->
+				 <OUT NO="1">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="2">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="3">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="4">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>		 
+				 <OUT NO="5">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="6">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>	 
+			  </IO> 
+
+			 <!--************** -->  
+
+			  <IO NO="15">                                <!--  15. IO   -->
+				 <OUT NO="1">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="2">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="3">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="4">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>		 
+				 <OUT NO="5">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 <OUT NO="6">
+					<sub> 0 </sub>
+					<sigr> 0 </sigr>
+					<valid> 0 </valid>
+					<collor> 0 </collor>
+					<led> 0 </led>
+					<osig> 0 </osig>
+					<yell> 0 </yell>
+					<sig> 0 </sig>  
+				 </OUT>
+				 
+			  </IO> 
+			  
+		</IO_MODULES_TABLE>
+		
+		<CONFLICT_COUPLES>                              <!--  tabela konfliktnih parova  -->
+																<!--  tabela zastitnih vremena   -->
+		   <NUMBER_OF_CONFLICT_COUPLES> 0 </NUMBER_OF_CONFLICT_COUPLES>
+			  
+		   <CONFLICT_COUPLE N="001"> 
+			  <signal_group_01> 0 </signal_group_01>
+			  <signal_group_02> 0 </signal_group_02>
+			  <ftime> 0 </ftime>
+			  <ltime> 0 </ltime>
+		   </CONFLICT_COUPLE>	 
+			  
+		   <CONFLICT_COUPLE N="002"> 
+			  <signal_group_01> 0 </signal_group_01>
+			  <signal_group_02> 0 </signal_group_02>
+			  <ftime> 0 </ftime>
+			  <ltime> 0 </ltime>
+		   </CONFLICT_COUPLE>	    
+			  
+		   <!--  ******************************  -->      
+			  
+		   <CONFLICT_COUPLE N="496"> 
+			  <signal_group_01> 0 </signal_group_01>
+			  <signal_group_02> 0 </signal_group_02>
+			  <ftime> 0 </ftime>
+			  <ltime> 0 </ltime>
+		   </CONFLICT_COUPLE>
+			  
+		</CONFLICT_COUPLES>
+
+		<MINGREEN_TIMES>                                <!--  tabela "minimalno zeleno" vremena - ima podataka koliko ima signalnih grupa   -->
+
+			<NUMBER_OF_MINGREEN_TIMES> 0 </NUMBER_OF_MINGREEN_TIMES>      <!--   ne moraju obavezno da se navedu minimalna vremena za svih 32 signalne grupe ?!?! -->
+
+			<min_green N="01"> 0 </min_green>
+			<min_green N="02"> 0 </min_green>
+			<min_green N="03"> 0 </min_green>
+			<min_green N="04"> 0 </min_green>
+			<min_green N="05"> 0 </min_green>
+			<min_green N="06"> 0 </min_green>
+			<min_green N="07"> 0 </min_green>
+			<min_green N="08"> 0 </min_green>
+			<min_green N="09"> 0 </min_green>
+			<min_green N="10"> 0 </min_green>
+			<min_green N="11"> 0 </min_green>
+			<min_green N="12"> 0 </min_green>
+			<min_green N="13"> 0 </min_green>
+			<min_green N="14"> 0 </min_green>
+			<min_green N="15"> 0 </min_green>
+			<min_green N="16"> 0 </min_green>
+			<min_green N="17"> 0 </min_green>
+			<min_green N="18"> 0 </min_green>
+			<min_green N="19"> 0 </min_green>
+			<min_green N="20"> 0 </min_green>
+			<min_green N="21"> 0 </min_green>
+			<min_green N="22"> 0 </min_green>
+			<min_green N="23"> 0 </min_green>
+			<min_green N="24"> 0 </min_green>
+			<min_green N="25"> 0 </min_green>
+			<min_green N="26"> 0 </min_green>
+			<min_green N="27"> 0 </min_green>
+			<min_green N="28"> 0 </min_green>
+			<min_green N="29"> 0 </min_green>
+			<min_green N="30"> 0 </min_green>
+			<min_green N="31"> 0 </min_green>
+			<min_green N="32"> 0 </min_green>
+			  
+		</MINGREEN_TIMES>  
+
+	</CNFLBoard_CONFIG> 
+	
+</CONFIG_DATA>
+	
+	
