@@ -5,4 +5,5 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/platform/COMPONENT_PSA
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
  mbed-os/components/TARGET_PSA/inc/psa/error.h \
  mbed-os/components/TARGET_PSA/services/platform/COMPONENT_PSA_SRV_IMPL/platform_srv_impl.h \
- mbed-os/components/TARGET_PSA/inc/psa/client.h
+ mbed-os/components/TARGET_PSA/inc/psa/client.h \
+ mbed-os/components/TARGET_PSA/inc/psa/tfm_platform_api.h

@@ -24,4 +24,5 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/src/ssl_cookie.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecdh.h \
  mbed-os/features/mbedtls/inc/mbedtls/ssl_internal.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha256.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h

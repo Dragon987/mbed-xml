@@ -41,8 +41,7 @@ BUILD/K64F/GCC_ARM/mbed-os/platform/source/SysTimer.o: \
  mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_power_mgmt.h \
  mbed-os/platform/CriticalSectionLock.h \
  mbed-os/platform/source/SysTimer.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/platform/mbed_atomic.h \
- mbed-os/drivers/TimerEvent.h \
+ mbed-os/platform/mbed_atomic.h mbed-os/drivers/TimerEvent.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Source/rtx_lib.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Source/rtx_core_c.h \
  mbed-os/cmsis/RTE_Components.h \

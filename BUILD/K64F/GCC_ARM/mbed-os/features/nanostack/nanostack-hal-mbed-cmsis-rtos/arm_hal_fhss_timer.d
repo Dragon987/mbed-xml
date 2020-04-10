@@ -49,14 +49,18 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/nanostack-hal-mbed-cmsis-rtos/arm_
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/hal/ticker_api.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/events/equeue.h \
- mbed-os/events/internal/equeue_platform.h \
+ mbed-os/events/equeue.h mbed-os/events/internal/equeue_platform.h \
  mbed-os/rtos/mbed_rtos_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h mbed-os/events/EventQueue.h \
  mbed-os/events/equeue.h mbed-os/platform/Callback.h \
+ mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/events/mbed_shared_queues.h mbed-os/drivers/Timeout.h \
- mbed-os/drivers/Ticker.h mbed-os/platform/cxxsupport/mstd_utility \
- mbed-os/drivers/TimerEvent.h mbed-os/hal/lp_ticker_api.h
+ mbed-os/drivers/Ticker.h mbed-os/drivers/TimerEvent.h \
+ mbed-os/hal/lp_ticker_api.h

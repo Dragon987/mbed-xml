@@ -7,6 +7,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/md.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md_internal.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md2.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md4.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md5.h \

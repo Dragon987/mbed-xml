@@ -42,8 +42,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/kvstore/direct_access_devicekey/Dire
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h mbed-os/rtos/mbed_rtos1_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/mbed_rtos_storage.h \
@@ -52,6 +52,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/kvstore/direct_access_devicekey/Dire
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/platform/ScopedLock.h mbed-os/drivers/FlashIAP.h \
  mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
- mbed-os/drivers/MbedCRC.h mbed-os/drivers/internal/TableCRC.h \
- mbed-os/hal/crc_api.h \
- mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h
+ mbed-os/drivers/MbedCRC.h mbed-os/hal/crc_api.h \
+ mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h \
+ mbed-os/features/storage/kvstore/conf/kv_config.h \
+ mbed-os/features/storage/blockdevice/BlockDevice.h

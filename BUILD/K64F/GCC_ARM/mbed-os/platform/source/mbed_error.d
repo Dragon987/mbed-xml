@@ -41,6 +41,7 @@ BUILD/K64F/GCC_ARM/mbed-os/platform/source/mbed_error.o: \
  mbed-os/platform/mbed_interface.h mbed-os/platform/mbed_power_mgmt.h \
  mbed-os/hal/ticker_api.h mbed-os/platform/mbed_stats.h \
  mbed-os/platform/source/TARGET_CORTEX_M/mbed_fault_handler.h \
+ mbed-os/drivers/MbedCRC.h mbed-os/hal/crc_api.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h

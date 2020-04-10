@@ -2,8 +2,14 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBMSD.o: \
  mbed-os/drivers/source/usb/USBMSD.cpp BUILD/K64F/GCC_ARM/mbed_config.h \
  mbed-os/drivers/USBMSD.h mbed-os/drivers/internal/USBDescriptor.h \
  mbed-os/drivers/internal/USBDevice_Types.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/drivers/internal/PolledQueue.h \
  mbed-os/drivers/internal/TaskQueue.h mbed-os/drivers/internal/TaskBase.h \
  mbed-os/drivers/internal/LinkEntry.h mbed-os/platform/mbed_critical.h \
@@ -17,7 +23,7 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBMSD.o: \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
+ mbed-os/platform/NonCopyable.h \
  mbed-os/features/storage/blockdevice/BlockDevice.h mbed-os/rtos/Mutex.h \
  mbed-os/rtos/mbed_rtos_types.h mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \

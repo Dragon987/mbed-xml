@@ -23,6 +23,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/sal-stack-nanostack/source/6LoWPAN
  mbed-os/features/frameworks/mbed-client-randlib/mbed-client-randlib/randLIB.h \
  mbed-os/features/frameworks/nanostack-libservice/mbed-client-libservice/ns_list.h \
  mbed-os/features/frameworks/nanostack-libservice/mbed-client-libservice/nsdynmemLIB.h \
+ mbed-os/features/nanostack/sal-stack-nanostack/source/Common_Protocols/icmpv6.h \
+ mbed-os/features/nanostack/sal-stack-nanostack/source/Common_Protocols/icmpv6_prefix.h \
  mbed-os/features/nanostack/sal-stack-nanostack/source/6LoWPAN/ws/ws_config.h \
  mbed-os/features/nanostack/sal-stack-nanostack/source/6LoWPAN/ws/ws_common_defines.h \
  mbed-os/features/nanostack/sal-stack-nanostack/source/6LoWPAN/ws/ws_common.h \

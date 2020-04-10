@@ -8,5 +8,6 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
  mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_PSA_SRV_IMPL/pits_impl.h \
  mbed-os/features/storage/kvstore/conf/kv_config.h \
+ mbed-os/features/storage/blockdevice/BlockDevice.h \
  mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
  mbed-os/platform/mbed_toolchain.h

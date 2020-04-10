@@ -21,4 +21,5 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/src/ssl_ticket.o: \
  mbed-os/features/mbedtls/inc/mbedtls/x509.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/asn1.h \
  mbed-os/features/mbedtls/inc/mbedtls/x509_crl.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecdh.h
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecdh.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h

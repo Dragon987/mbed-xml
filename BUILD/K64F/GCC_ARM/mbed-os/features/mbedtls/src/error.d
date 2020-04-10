@@ -3,7 +3,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/src/error.o: \
  mbed-os/features/mbedtls/inc/mbedtls/config.h \
  mbed-os/features/mbedtls/platform/inc/platform_mbed.h \
  mbed-os/features/mbedtls/inc/mbedtls/check_config.h \
- mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_time.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
@@ -20,6 +19,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/src/error.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecp.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/entropy.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/gcm.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hkdf.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md.h \

@@ -6,8 +6,14 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBAudio.o: \
  mbed-os/drivers/internal/USBDevice_Types.h mbed-os/hal/usb/USBPhy.h \
  mbed-os/hal/usb/USBPhyTypes.h mbed-os/hal/usb/USBPhyEvents.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/drivers/internal/OperationList.h \
  mbed-os/drivers/internal/OperationListBase.h \
  mbed-os/drivers/internal/LinkedListBase.h \
@@ -21,9 +27,8 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBAudio.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/ScopedLock.h mbed-os/rtos/Semaphore.h \
- mbed-os/drivers/internal/ByteBuffer.h mbed-os/rtos/EventFlags.h \
- mbed-os/drivers/internal/USBAudio_Types.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/ScopedLock.h \
+ mbed-os/rtos/Semaphore.h mbed-os/drivers/internal/ByteBuffer.h \
+ mbed-os/rtos/EventFlags.h mbed-os/drivers/internal/USBAudio_Types.h \
  mbed-os/drivers/internal/EndpointResolver.h \
  mbed-os/hal/usb/usb_phy_api.h mbed-os/hal/usb/USBPhy.h

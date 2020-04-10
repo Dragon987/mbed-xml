@@ -4,9 +4,7 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/ps/COMPONENT_N
  mbed-os/features/storage/kvstore/kv_map/KVMap.h \
  mbed-os/features/storage/kvstore/include/KVStore.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -15,7 +13,8 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/ps/COMPONENT_N
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/ScopedLock.h mbed-os/platform/SingletonPtr.h \
+ mbed-os/platform/ScopedLock.h mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/mbed_preprocessor.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
@@ -55,7 +54,11 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/ps/COMPONENT_N
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/FileBase.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
  mbed-os/platform/DirHandle.h mbed-os/platform/FileSystemLike.h \
  mbed-os/platform/FileSystemHandle.h \
  mbed-os/features/storage/kvstore/include/KVStore.h \
@@ -63,9 +66,9 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/ps/COMPONENT_N
  mbed-os/features/storage/kvstore/tdbstore/TDBStore.h \
  mbed-os/features/storage/blockdevice/BufferedBlockDevice.h \
  mbed-os/features/storage/blockdevice/BlockDevice.h \
- mbed-os/platform/PlatformMutex.h \
+ mbed-os/platform/PlatformMutex.h mbed-os/platform/mbed_error.h \
  mbed-os/components/TARGET_PSA/inc/psa/protected_storage.h \
  mbed-os/components/TARGET_PSA/inc/psa/error.h \
  mbed-os/components/TARGET_PSA/inc/psa/storage_common.h \
  mbed-os/components/TARGET_PSA/services/storage/common/psa_storage_common_impl.h \
- mbed-os/platform/mbed_error.h mbed-os/platform/mbed_toolchain.h
+ mbed-os/platform/mbed_toolchain.h

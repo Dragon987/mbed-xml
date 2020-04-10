@@ -2,12 +2,11 @@ BUILD/K64F/GCC_ARM/mbed-os/features/device_key/source/DeviceKey.o: \
  mbed-os/features/device_key/source/DeviceKey.cpp \
  BUILD/K64F/GCC_ARM/mbed_config.h \
  mbed-os/features/device_key/source/DeviceKey.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_debug.h \
+ mbed-os/platform/NonCopyable.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/cmac.h \
  mbed-os/features/mbedtls/inc/mbedtls/config.h \
  mbed-os/features/mbedtls/platform/inc/platform_mbed.h \
  mbed-os/features/mbedtls/inc/mbedtls/check_config.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/cmac.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/cipher.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
@@ -27,7 +26,9 @@ BUILD/K64F/GCC_ARM/mbed-os/features/device_key/source/DeviceKey.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/ScopedLock.h \
+ mbed-os/platform/ScopedLock.h mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_error.h \
+ mbed-os/platform/mbed_retarget.h \
  mbed-os/features/storage/kvstore/kv_map/KVMap.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_atomic.h \
@@ -45,7 +46,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/device_key/source/DeviceKey.o: \
  mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/features/storage/filesystem/FileSystem.h \
- mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
+ mbed-os/platform/platform.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/PortNames.h \
@@ -68,7 +69,11 @@ BUILD/K64F/GCC_ARM/mbed-os/features/device_key/source/DeviceKey.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/FileBase.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
  mbed-os/platform/DirHandle.h mbed-os/platform/FileSystemLike.h \
  mbed-os/platform/FileSystemHandle.h \
  mbed-os/features/storage/kvstore/conf/kv_config.h \

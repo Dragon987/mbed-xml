@@ -7,9 +7,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/kvstore/tdbstore/TDBStore.o: \
  mbed-os/features/storage/blockdevice/BufferedBlockDevice.h \
  mbed-os/features/storage/blockdevice/BlockDevice.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -18,9 +16,10 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/kvstore/tdbstore/TDBStore.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/ScopedLock.h mbed-os/platform/mbed_error.h \
- mbed-os/platform/mbed_retarget.h mbed-os/platform/mbed_wait_api.h \
- mbed-os/platform/mbed_atomic.h \
+ mbed-os/platform/ScopedLock.h mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_error.h \
+ mbed-os/platform/mbed_retarget.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_wait_api.h mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12.h \
@@ -56,7 +55,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/kvstore/tdbstore/TDBStore.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/drivers/MbedCRC.h mbed-os/drivers/internal/TableCRC.h \
- mbed-os/hal/crc_api.h mbed-os/platform/SingletonPtr.h \
- mbed-os/platform/PlatformMutex.h \
- mbed-os/features/storage/system_storage/SystemStorage.h
+ mbed-os/drivers/MbedCRC.h mbed-os/hal/crc_api.h \
+ mbed-os/platform/SingletonPtr.h mbed-os/platform/PlatformMutex.h \
+ mbed-os/drivers/FlashIAP.h mbed-os/hal/flash_api.h

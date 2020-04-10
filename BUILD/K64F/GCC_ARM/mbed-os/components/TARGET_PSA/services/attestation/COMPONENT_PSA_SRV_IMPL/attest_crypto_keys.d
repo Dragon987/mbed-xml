@@ -24,4 +24,5 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/attestation/COMPONENT_
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha1.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha256.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_extra.h
+ mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_extra.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_compat.h

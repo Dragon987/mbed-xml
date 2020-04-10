@@ -2,21 +2,21 @@
     {
         "module": "[fill]",
         "size": {
-            ".text": 187,
+            ".text": 178,
             ".data": 0,
-            ".bss": 2350,
-            ".text-delta": 0,
+            ".bss": 2188,
+            ".text-delta": -9,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": -162
         }
     },
     {
         "module": "[lib]/c.a",
         "size": {
-            ".text": 50616,
+            ".text": 29475,
             ".data": 2572,
             ".bss": 127,
-            ".text-delta": 0,
+            ".text-delta": -21141,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -24,10 +24,10 @@
     {
         "module": "[lib]/gcc.a",
         "size": {
-            ".text": 3264,
+            ".text": 920,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": -2344,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -57,10 +57,10 @@
     {
         "module": "mbed-os/components",
         "size": {
-            ".text": 5919,
+            ".text": 4647,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": -1272,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -68,23 +68,23 @@
     {
         "module": "mbed-os/drivers",
         "size": {
-            ".text": 2432,
+            ".text": 1595,
             ".data": 0,
-            ".bss": 1136,
-            ".text-delta": 0,
+            ".bss": 1096,
+            ".text-delta": -837,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": -40
         }
     },
     {
         "module": "mbed-os/features",
         "size": {
-            ".text": 17331,
+            ".text": 17115,
             ".data": 0,
-            ".bss": 600,
-            ".text-delta": 0,
+            ".bss": 287,
+            ".text-delta": -216,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": -313
         }
     },
     {
@@ -101,21 +101,21 @@
     {
         "module": "mbed-os/platform",
         "size": {
-            ".text": 7572,
+            ".text": 8680,
             ".data": 276,
-            ".bss": 353,
-            ".text-delta": 0,
+            ".bss": 361,
+            ".text-delta": 1108,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": 8
         }
     },
     {
         "module": "mbed-os/rtos",
         "size": {
-            ".text": 8658,
+            ".text": 8654,
             ".data": 168,
             ".bss": 5972,
-            ".text-delta": 0,
+            ".text-delta": -4,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -123,21 +123,21 @@
     {
         "module": "mbed-os/targets",
         "size": {
-            ".text": 13102,
+            ".text": 12696,
             ".data": 36,
-            ".bss": 395,
-            ".text-delta": 0,
+            ".bss": 390,
+            ".text-delta": -406,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": -5
         }
     },
     {
         "module": "src/dxml",
         "size": {
-            ".text": 5194,
+            ".text": 5190,
             ".data": 0,
             ".bss": 4,
-            ".text-delta": 0,
+            ".text-delta": -4,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -145,10 +145,10 @@
     {
         "module": "src/main.o",
         "size": {
-            ".text": 273,
+            ".text": 269,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": -4,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -166,10 +166,10 @@
     },
     {
         "summary": {
-            "static_ram": 14160,
-            "static_ram_delta": 0,
-            "total_flash": 123696,
-            "total_flash_delta": 0
+            "static_ram": 13648,
+            "static_ram_delta": -512,
+            "total_flash": 98567,
+            "total_flash_delta": -25129
         }
     }
 ]

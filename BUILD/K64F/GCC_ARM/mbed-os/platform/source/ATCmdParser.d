@@ -1,11 +1,16 @@
 BUILD/K64F/GCC_ARM/mbed-os/platform/source/ATCmdParser.o: \
  mbed-os/platform/source/ATCmdParser.cpp BUILD/K64F/GCC_ARM/mbed_config.h \
  mbed-os/platform/ATCmdParser.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/mbed_poll.h mbed-os/platform/platform.h \
- mbed-os/platform/mbed_retarget.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/NonCopyable.h \
+ mbed-os/platform/FileHandle.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \

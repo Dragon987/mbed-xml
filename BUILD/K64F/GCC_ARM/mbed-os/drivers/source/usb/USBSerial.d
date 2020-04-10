@@ -7,8 +7,14 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBSerial.o: \
  mbed-os/drivers/internal/USBDevice_Types.h mbed-os/hal/usb/USBPhy.h \
  mbed-os/hal/usb/USBPhyTypes.h mbed-os/hal/usb/USBPhyEvents.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/drivers/internal/OperationList.h \
  mbed-os/drivers/internal/OperationListBase.h \
  mbed-os/drivers/internal/LinkedListBase.h \
@@ -22,10 +28,9 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBSerial.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/ScopedLock.h mbed-os/rtos/Semaphore.h \
- mbed-os/platform/Stream.h mbed-os/platform/platform.h \
- mbed-os/platform/mbed_retarget.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/ScopedLock.h \
+ mbed-os/rtos/Semaphore.h mbed-os/platform/Stream.h \
+ mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
@@ -59,8 +64,6 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/USBSerial.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/FileLike.h mbed-os/platform/FileBase.h \
  mbed-os/platform/SingletonPtr.h mbed-os/platform/mbed_atomic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/platform/PlatformMutex.h mbed-os/rtos/Mutex.h \
  mbed-os/platform/FileHandle.h mbed-os/platform/Callback.h \

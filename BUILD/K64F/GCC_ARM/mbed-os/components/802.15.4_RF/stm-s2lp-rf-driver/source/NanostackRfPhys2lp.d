@@ -44,11 +44,16 @@ BUILD/K64F/GCC_ARM/mbed-os/components/802.15.4_RF/stm-s2lp-rf-driver/source/Nano
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/hal/gpio_api.h mbed-os/hal/pinmap.h mbed-os/drivers/DigitalOut.h \
  mbed-os/drivers/InterruptIn.h mbed-os/hal/gpio_irq_api.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/platform/mbed_critical.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/drivers/SPI.h \
- mbed-os/platform/PlatformMutex.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/drivers/SPI.h mbed-os/platform/PlatformMutex.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -60,8 +65,6 @@ BUILD/K64F/GCC_ARM/mbed-os/components/802.15.4_RF/stm-s2lp-rf-driver/source/Nano
  mbed-os/platform/ScopedLock.h mbed-os/hal/spi_api.h \
  mbed-os/hal/dma_api.h mbed-os/hal/buffer.h mbed-os/drivers/DigitalOut.h \
  mbed-os/platform/SingletonPtr.h mbed-os/platform/mbed_atomic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h mbed-os/platform/CThunk.h \
  mbed-os/platform/internal/CThunkBase.h mbed-os/platform/CircularBuffer.h \
  mbed-os/platform/Transaction.h \
@@ -75,11 +78,10 @@ BUILD/K64F/GCC_ARM/mbed-os/components/802.15.4_RF/stm-s2lp-rf-driver/source/Nano
  mbed-os/features/frameworks/nanostack-libservice/mbed-client-libservice/ns_types.h \
  mbed-os/drivers/Timer.h mbed-os/hal/ticker_api.h \
  mbed-os/drivers/Timeout.h mbed-os/drivers/Ticker.h \
- mbed-os/platform/cxxsupport/mstd_utility mbed-os/drivers/TimerEvent.h \
- mbed-os/hal/lp_ticker_api.h mbed-os/rtos/Thread.h \
- mbed-os/rtos/Semaphore.h mbed-os/platform/mbed_wait_api.h \
- mbed-os/platform/mbed_error.h mbed-os/rtos/rtos.h mbed-os/rtos/Kernel.h \
- mbed-os/rtos/Thread.h mbed-os/rtos/ThisThread.h mbed-os/rtos/RtosTimer.h \
- mbed-os/rtos/Mail.h mbed-os/rtos/Queue.h mbed-os/rtos/MemoryPool.h \
- mbed-os/rtos/Kernel.h mbed-os/rtos/EventFlags.h \
- mbed-os/rtos/ConditionVariable.h
+ mbed-os/drivers/TimerEvent.h mbed-os/hal/lp_ticker_api.h \
+ mbed-os/rtos/Thread.h mbed-os/rtos/Semaphore.h \
+ mbed-os/platform/mbed_wait_api.h mbed-os/platform/mbed_error.h \
+ mbed-os/rtos/rtos.h mbed-os/rtos/Kernel.h mbed-os/rtos/Thread.h \
+ mbed-os/rtos/ThisThread.h mbed-os/rtos/Mail.h mbed-os/rtos/Queue.h \
+ mbed-os/rtos/MemoryPool.h mbed-os/rtos/Kernel.h \
+ mbed-os/rtos/EventFlags.h mbed-os/rtos/ConditionVariable.h

@@ -47,8 +47,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nfc/source/controllers/PN512SPITransportDriv
  mbed-os/features/nfc/controllers/PN512TransportDriver.h \
  mbed-os/features/nfc/stack/platform/nfc_transport.h \
  mbed-os/drivers/SPI.h mbed-os/platform/PlatformMutex.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/platform/NonCopyable.h mbed-os/rtos/Mutex.h \
+ mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -66,8 +66,12 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nfc/source/controllers/PN512SPITransportDriv
  mbed-os/platform/internal/mbed_atomic_impl.h mbed-os/platform/CThunk.h \
  mbed-os/platform/internal/CThunkBase.h mbed-os/platform/CircularBuffer.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/Callback.h \
- mbed-os/platform/Transaction.h mbed-os/drivers/InterruptIn.h \
- mbed-os/hal/gpio_irq_api.h \
+ mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/Transaction.h \
+ mbed-os/drivers/InterruptIn.h mbed-os/hal/gpio_irq_api.h \
  mbed-os/features/nfc/stack/transceiver/transceiver.h \
  mbed-os/features/nfc/stack/transceiver/protocols.h \
  mbed-os/features/nfc/stack/platform/nfc_scheduler.h \

@@ -58,7 +58,11 @@ BUILD/K64F/GCC_ARM/mbed-os/features/storage/filesystem/fat/FATFileSystem.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/platform/ScopedLock.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
  mbed-os/platform/DirHandle.h mbed-os/platform/FileSystemLike.h \
  mbed-os/platform/FileSystemHandle.h \
  mbed-os/features/storage/blockdevice/BlockDevice.h \

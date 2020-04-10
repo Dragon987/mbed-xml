@@ -11,16 +11,20 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/rtos/mbed_rtos_types.h mbed-os/rtos/Thread.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/NonCopyable.h \
  mbed-os/rtos/Semaphore.h mbed-os/rtos/Mutex.h \
  mbed-os/platform/ScopedLock.h mbed-os/rtos/ThisThread.h \
- mbed-os/rtos/RtosTimer.h mbed-os/rtos/Mail.h mbed-os/rtos/Queue.h \
- mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
- mbed-os/rtos/MemoryPool.h mbed-os/rtos/Kernel.h \
- mbed-os/rtos/EventFlags.h mbed-os/rtos/ConditionVariable.h \
- mbed-os/features/netsocket/nsapi.h \
+ mbed-os/rtos/Mail.h mbed-os/rtos/Queue.h mbed-os/platform/mbed_error.h \
+ mbed-os/platform/mbed_retarget.h mbed-os/rtos/MemoryPool.h \
+ mbed-os/rtos/Kernel.h mbed-os/rtos/EventFlags.h \
+ mbed-os/rtos/ConditionVariable.h mbed-os/features/netsocket/nsapi.h \
  mbed-os/features/netsocket/nsapi_types.h \
  mbed-os/features/netsocket/SocketAddress.h \
  mbed-os/platform/mbed_toolchain.h \
@@ -31,7 +35,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/features/netsocket/EthInterface.h \
  mbed-os/features/netsocket/WiFiInterface.h \
  mbed-os/features/netsocket/WiFiAccessPoint.h \
- mbed-os/features/netsocket/CellularBase.h \
  mbed-os/features/netsocket/CellularInterface.h \
  mbed-os/features/netsocket/MeshInterface.h \
  mbed-os/features/netsocket/Socket.h \
@@ -48,8 +51,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/system_MK64F12.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12_features.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis_nvic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/features/netsocket/SocketStats.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_atomic.h mbed-os/platform/PlatformMutex.h \
@@ -104,6 +105,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ctr_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/netsocket/DTLSSocketWrapper.h \
  mbed-os/features/netsocket/TLSSocketWrapper.h \
@@ -143,24 +145,20 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/drivers/PortOut.h mbed-os/drivers/AnalogIn.h \
  mbed-os/hal/analogin_api.h mbed-os/drivers/AnalogOut.h \
  mbed-os/hal/analogout_api.h mbed-os/drivers/PwmOut.h \
- mbed-os/hal/pwmout_api.h mbed-os/drivers/Serial.h \
- mbed-os/platform/Stream.h mbed-os/platform/FileLike.h \
- mbed-os/drivers/SerialBase.h mbed-os/hal/serial_api.h \
- mbed-os/hal/buffer.h mbed-os/hal/dma_api.h mbed-os/platform/CThunk.h \
- mbed-os/platform/internal/CThunkBase.h mbed-os/drivers/SPI.h \
- mbed-os/hal/spi_api.h mbed-os/platform/CircularBuffer.h \
+ mbed-os/hal/pwmout_api.h mbed-os/drivers/SPI.h mbed-os/hal/spi_api.h \
+ mbed-os/hal/dma_api.h mbed-os/hal/buffer.h mbed-os/platform/CThunk.h \
+ mbed-os/platform/internal/CThunkBase.h mbed-os/platform/CircularBuffer.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/Transaction.h \
  mbed-os/drivers/SPISlave.h mbed-os/drivers/I2C.h mbed-os/hal/i2c_api.h \
- mbed-os/drivers/I2CSlave.h mbed-os/drivers/Ethernet.h \
- mbed-os/drivers/CAN.h mbed-os/drivers/RawSerial.h \
- mbed-os/drivers/UARTSerial.h mbed-os/drivers/InterruptIn.h \
- mbed-os/hal/gpio_irq_api.h mbed-os/drivers/FlashIAP.h \
- mbed-os/hal/flash_api.h mbed-os/drivers/MbedCRC.h \
- mbed-os/drivers/internal/TableCRC.h mbed-os/hal/crc_api.h \
- mbed-os/drivers/QSPI.h mbed-os/drivers/Watchdog.h \
- mbed-os/hal/watchdog_api.h mbed-os/drivers/ResetReason.h \
- mbed-os/hal/reset_reason_api.h mbed-os/drivers/Timer.h \
- mbed-os/drivers/Ticker.h mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/drivers/I2CSlave.h mbed-os/drivers/CAN.h \
+ mbed-os/drivers/UnbufferedSerial.h mbed-os/drivers/SerialBase.h \
+ mbed-os/hal/serial_api.h mbed-os/drivers/BufferedSerial.h \
+ mbed-os/drivers/InterruptIn.h mbed-os/hal/gpio_irq_api.h \
+ mbed-os/drivers/FlashIAP.h mbed-os/hal/flash_api.h \
+ mbed-os/drivers/MbedCRC.h mbed-os/hal/crc_api.h mbed-os/drivers/QSPI.h \
+ mbed-os/drivers/Watchdog.h mbed-os/hal/watchdog_api.h \
+ mbed-os/drivers/ResetReason.h mbed-os/hal/reset_reason_api.h \
+ mbed-os/drivers/Timer.h mbed-os/drivers/Ticker.h \
  mbed-os/drivers/TimerEvent.h mbed-os/hal/lp_ticker_api.h \
  mbed-os/drivers/Timeout.h mbed-os/drivers/Ticker.h \
  mbed-os/drivers/LowPowerTimeout.h mbed-os/drivers/LowPowerTicker.h \
@@ -176,8 +174,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/platform/ScopedRomWriteLock.h mbed-os/platform/mbed_mpu_mgmt.h \
  mbed-os/hal/mpu_api.h mbed-os/platform/ScopedRamExecutionLock.h \
  mbed-os/platform/mbed_stats.h mbed-os/platform/Callback.h \
- mbed-os/platform/FunctionPointer.h mbed-os/platform/ScopedLock.h \
- mbed-os/rtos/rtos.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/ScopedLock.h mbed-os/rtos/rtos.h \
+ mbed-os/platform/mbed_assert.h \
  mbed-os/features/frameworks/TARGET_PSA/val_interfaces.h \
  mbed-os/features/frameworks/TARGET_PSA/val.h \
  mbed-os/features/frameworks/TARGET_PSA/pal/pal_common.h \
@@ -205,6 +203,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/TARGET_PSA/pal/pal_mbed_os_intf.o
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha1.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha256.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_extra.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_compat.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/entropy_poll.h \
  mbed-os/components/TARGET_PSA/services/attestation/psa_attest_inject_key.h \
  mbed-os/components/TARGET_PSA/services/attestation/psa_initial_attestation_api.h \

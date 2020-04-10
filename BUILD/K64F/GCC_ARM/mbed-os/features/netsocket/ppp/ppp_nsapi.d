@@ -1,10 +1,15 @@
 BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/ppp/ppp_nsapi.o: \
  mbed-os/features/netsocket/ppp/ppp_nsapi.cpp \
  BUILD/K64F/GCC_ARM/mbed_config.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/mbed_poll.h mbed-os/platform/platform.h \
- mbed-os/platform/mbed_retarget.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
@@ -36,7 +41,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/ppp/ppp_nsapi.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
+ mbed-os/platform/NonCopyable.h \
  mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h \
  mbed-os/features/netsocket/nsapi_ppp.h mbed-os/platform/FileHandle.h \
  mbed-os/features/netsocket/NetworkStack.h \
@@ -52,7 +57,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/ppp/ppp_nsapi.o: \
  mbed-os/features/netsocket/EthInterface.h \
  mbed-os/features/netsocket/WiFiInterface.h \
  mbed-os/features/netsocket/WiFiAccessPoint.h \
- mbed-os/features/netsocket/CellularBase.h \
  mbed-os/features/netsocket/CellularInterface.h \
  mbed-os/features/netsocket/MeshInterface.h \
  mbed-os/features/netsocket/Socket.h \
@@ -69,8 +73,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/ppp/ppp_nsapi.o: \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/platform/ScopedLock.h mbed-os/rtos/EventFlags.h \
  mbed-os/platform/mbed_atomic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/features/netsocket/SocketStats.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_atomic.h mbed-os/platform/PlatformMutex.h \
@@ -104,6 +106,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/ppp/ppp_nsapi.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ctr_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/netsocket/DTLSSocketWrapper.h \
  mbed-os/features/netsocket/TLSSocketWrapper.h \

@@ -5,11 +5,16 @@ BUILD/K64F/GCC_ARM/mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUEC
  mbed-os/features/cellular/framework/AT/AT_CellularNetwork.h \
  mbed-os/features/cellular/framework/API/CellularNetwork.h \
  mbed-os/features/cellular/framework/common/CellularList.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/features/netsocket/nsapi_types.h \
- mbed-os/features/cellular/framework/AT/AT_CellularBase.h \
- mbed-os/features/cellular/framework/AT/ATHandler.h \
+ mbed-os/features/cellular/framework/API/ATHandler.h \
  mbed-os/platform/mbed_retarget.h mbed-os/events/EventQueue.h \
  mbed-os/events/equeue.h mbed-os/events/internal/equeue_platform.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
@@ -18,8 +23,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUEC
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h mbed-os/platform/Callback.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/drivers/UARTSerial.h mbed-os/platform/platform.h \
+ mbed-os/platform/NonCopyable.h mbed-os/drivers/BufferedSerial.h \
+ mbed-os/platform/platform.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
@@ -63,6 +68,13 @@ BUILD/K64F/GCC_ARM/mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUEC
  mbed-os/rtos/mbed_rtos_storage.h mbed-os/platform/ScopedLock.h \
  mbed-os/platform/CircularBuffer.h mbed-os/rtos/ConditionVariable.h \
  mbed-os/rtos/Semaphore.h \
+ mbed-os/features/cellular/framework/AT/AT_CellularDevice.h \
+ mbed-os/features/cellular/framework/API/CellularDevice.h \
+ mbed-os/features/cellular/framework/device/CellularStateMachine.h \
+ mbed-os/features/cellular/framework/common/CellularCommon.h \
+ mbed-os/platform/PlatformMutex.h \
+ mbed-os/features/cellular/framework/API/ATHandler.h \
+ mbed-os/rtos/Thread.h \
  mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUECTEL_BC95_CellularContext.h \
  mbed-os/features/cellular/framework/AT/AT_CellularContext.h \
  mbed-os/features/cellular/framework/API/CellularContext.h \
@@ -73,18 +85,12 @@ BUILD/K64F/GCC_ARM/mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUEC
  mbed-os/features/netsocket/nsapi_types.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/features/netsocket/DNS.h \
  mbed-os/features/cellular/framework/API/CellularDevice.h \
- mbed-os/features/cellular/framework/device/CellularStateMachine.h \
- mbed-os/features/cellular/framework/common/CellularCommon.h \
- mbed-os/platform/PlatformMutex.h \
- mbed-os/features/cellular/framework/AT/ATHandler.h \
  mbed-os/features/cellular/framework/common/CellularUtil.h \
- mbed-os/features/netsocket/cellular/ControlPlane_netif.h \
- mbed-os/rtos/Semaphore.h \
+ mbed-os/features/netsocket/ControlPlane_netif.h mbed-os/rtos/Semaphore.h \
  mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUECTEL_BC95_CellularInformation.h \
  mbed-os/features/cellular/framework/AT/AT_CellularInformation.h \
  mbed-os/features/cellular/framework/API/CellularInformation.h \
  mbed-os/features/cellular/framework/targets/QUECTEL/BC95/QUECTEL_BC95.h \
  mbed-os/features/cellular/framework/AT/AT_CellularDevice.h \
- mbed-os/features/cellular/framework/API/CellularDevice.h \
  mbed-os/features/cellular/framework/common/CellularLog.h \
  mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h

@@ -24,6 +24,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/platform/COMPONENT_PSA_S
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha256.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_extra.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_compat.h \
  mbed-os/features/mbedtls/mbed-crypto/platform/COMPONENT_PSA_SRV_IMPL/psa_crypto_core.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_se_driver.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/psa/crypto_driver_common.h \

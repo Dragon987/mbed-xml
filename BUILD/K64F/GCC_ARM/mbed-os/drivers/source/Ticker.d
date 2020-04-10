@@ -33,8 +33,12 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/Ticker.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
- mbed-os/hal/lp_ticker_api.h mbed-os/platform/FunctionPointer.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/Callback.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/hal/lp_ticker_api.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/mbed_power_mgmt.h

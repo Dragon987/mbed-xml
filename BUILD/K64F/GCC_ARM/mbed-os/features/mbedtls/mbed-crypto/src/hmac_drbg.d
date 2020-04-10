@@ -7,5 +7,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/hmac_drbg.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/md.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_time.h

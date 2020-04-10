@@ -42,8 +42,8 @@ BUILD/K64F/GCC_ARM/mbed-os/platform/source/Stream.o: \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h mbed-os/rtos/mbed_rtos1_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/mbed_rtos_storage.h \
@@ -51,5 +51,9 @@ BUILD/K64F/GCC_ARM/mbed-os/platform/source/Stream.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/platform/ScopedLock.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
  mbed-os/platform/mbed_error.h

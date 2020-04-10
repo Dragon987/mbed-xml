@@ -6,4 +6,5 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/ecp_curves.o: \
  mbed-os/features/mbedtls/inc/mbedtls/check_config.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecp.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/bignum.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h

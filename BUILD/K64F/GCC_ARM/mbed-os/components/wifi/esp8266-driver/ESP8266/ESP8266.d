@@ -2,7 +2,7 @@ BUILD/K64F/GCC_ARM/mbed-os/components/wifi/esp8266-driver/ESP8266/ESP8266.o: \
  mbed-os/components/wifi/esp8266-driver/ESP8266/ESP8266.cpp \
  BUILD/K64F/GCC_ARM/mbed_config.h \
  mbed-os/components/wifi/esp8266-driver/ESP8266/ESP8266.h \
- mbed-os/drivers/UARTSerial.h mbed-os/platform/platform.h \
+ mbed-os/drivers/BufferedSerial.h mbed-os/platform/platform.h \
  mbed-os/platform/mbed_retarget.h mbed-os/platform/mbed_toolchain.h \
  mbed-os/platform/mbed_preprocessor.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
@@ -37,15 +37,20 @@ BUILD/K64F/GCC_ARM/mbed-os/components/wifi/esp8266-driver/ESP8266/ESP8266.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/FileHandle.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_poll.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/drivers/SerialBase.h mbed-os/hal/serial_api.h \
- mbed-os/hal/pinmap.h mbed-os/hal/buffer.h mbed-os/hal/dma_api.h \
- mbed-os/platform/CThunk.h mbed-os/platform/internal/CThunkBase.h \
- mbed-os/drivers/InterruptIn.h mbed-os/hal/gpio_api.h \
- mbed-os/hal/gpio_irq_api.h mbed-os/platform/mbed_critical.h \
- mbed-os/platform/PlatformMutex.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/NonCopyable.h mbed-os/drivers/SerialBase.h \
+ mbed-os/hal/serial_api.h mbed-os/hal/pinmap.h mbed-os/hal/buffer.h \
+ mbed-os/hal/dma_api.h mbed-os/platform/CThunk.h \
+ mbed-os/platform/internal/CThunkBase.h mbed-os/drivers/InterruptIn.h \
+ mbed-os/hal/gpio_api.h mbed-os/hal/gpio_irq_api.h \
+ mbed-os/platform/mbed_critical.h mbed-os/platform/PlatformMutex.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -59,5 +64,8 @@ BUILD/K64F/GCC_ARM/mbed-os/components/wifi/esp8266-driver/ESP8266/ESP8266.o: \
  mbed-os/features/netsocket/WiFiAccessPoint.h \
  mbed-os/features/netsocket/nsapi_types.h mbed-os/platform/ATCmdParser.h \
  mbed-os/platform/mbed_error.h mbed-os/rtos/ThisThread.h \
+ mbed-os/features/netsocket/SocketAddress.h \
+ mbed-os/features/netsocket/nsapi_types.h \
+ mbed-os/platform/mbed_toolchain.h \
  mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h \
  mbed-os/rtos/Kernel.h

@@ -36,8 +36,7 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/BusOut.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/hal/gpio_api.h mbed-os/hal/pinmap.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \

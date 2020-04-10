@@ -19,8 +19,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/SocketStats.o: \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h mbed-os/rtos/mbed_rtos1_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/mbed_rtos_storage.h \
@@ -31,6 +31,11 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/SocketStats.o: \
  mbed-os/features/netsocket/SocketAddress.h \
  mbed-os/features/netsocket/nsapi_types.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/Callback.h \
+ mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/features/netsocket/SocketAddress.h mbed-os/hal/ticker_api.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/objects.h \

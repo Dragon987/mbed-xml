@@ -49,10 +49,4 @@ BUILD/K64F/GCC_ARM/mbed-os/features/frameworks/utest/source/unity_handler.o: \
  mbed-os/features/frameworks/utest/utest/utest_specification.h \
  mbed-os/features/frameworks/utest/utest/utest_stack_trace.h \
  mbed-os/features/frameworks/utest/utest/unity_handler.h \
- mbed-os/features/frameworks/greentea-client/greentea-client/greentea_serial.h \
- mbed-os/drivers/RawSerial.h mbed-os/platform/platform.h \
- mbed-os/platform/mbed_retarget.h mbed-os/drivers/SerialBase.h \
- mbed-os/platform/Callback.h mbed-os/hal/serial_api.h \
- mbed-os/hal/pinmap.h mbed-os/hal/buffer.h mbed-os/hal/dma_api.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/CThunk.h mbed-os/platform/internal/CThunkBase.h
+ mbed-os/features/frameworks/greentea-client/greentea-client/test_env.h

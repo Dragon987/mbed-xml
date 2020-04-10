@@ -7,7 +7,7 @@ BUILD/K64F/GCC_ARM/mbed-os/rtos/source/ThisThread.o: \
  mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_critical.h \
  mbed-os/platform/source/mbed_os_timer.h \
  mbed-os/platform/source/SysTimer.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/platform/mbed_atomic.h \
+ mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12.h \

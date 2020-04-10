@@ -34,14 +34,17 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/SerialBase.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
- mbed-os/hal/serial_api.h mbed-os/hal/pinmap.h mbed-os/hal/buffer.h \
- mbed-os/hal/dma_api.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/platform/CThunk.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/hal/serial_api.h \
+ mbed-os/hal/pinmap.h mbed-os/hal/buffer.h mbed-os/hal/dma_api.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/CThunk.h \
  mbed-os/platform/internal/CThunkBase.h mbed-os/platform/mbed_wait_api.h \
  mbed-os/platform/mbed_atomic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/mbed_power_mgmt.h \
  mbed-os/hal/ticker_api.h

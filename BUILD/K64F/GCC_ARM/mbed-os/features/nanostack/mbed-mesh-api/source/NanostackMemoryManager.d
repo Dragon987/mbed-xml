@@ -14,11 +14,17 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/mbed-mesh-api/source/NanostackMemo
  mbed-os/features/netsocket/NetworkStack.h \
  mbed-os/features/netsocket/NetworkInterface.h \
  mbed-os/features/netsocket/nsapi_types.h mbed-os/platform/Callback.h \
- mbed-os/platform/mbed_assert.h mbed-os/features/netsocket/DNS.h \
+ mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
+ mbed-os/features/netsocket/DNS.h \
  mbed-os/features/netsocket/EthInterface.h \
  mbed-os/features/netsocket/WiFiInterface.h \
  mbed-os/features/netsocket/WiFiAccessPoint.h \
- mbed-os/features/netsocket/CellularBase.h \
  mbed-os/features/netsocket/CellularInterface.h \
  mbed-os/features/netsocket/MeshInterface.h \
  mbed-os/features/netsocket/Socket.h \
@@ -33,9 +39,8 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/mbed-mesh-api/source/NanostackMemo
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/ScopedLock.h mbed-os/rtos/EventFlags.h \
- mbed-os/platform/mbed_atomic.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/ScopedLock.h \
+ mbed-os/rtos/EventFlags.h mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12.h \
@@ -46,8 +51,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/mbed-mesh-api/source/NanostackMemo
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/system_MK64F12.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12_features.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis_nvic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/features/netsocket/SocketStats.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_atomic.h mbed-os/platform/PlatformMutex.h \
@@ -103,6 +106,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/mbed-mesh-api/source/NanostackMemo
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ctr_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/netsocket/DTLSSocketWrapper.h \
  mbed-os/features/netsocket/TLSSocketWrapper.h \

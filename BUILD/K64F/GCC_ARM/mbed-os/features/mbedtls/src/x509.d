@@ -11,6 +11,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/src/x509.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/rsa.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecp.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecdsa.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/oid.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/cipher.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \

@@ -37,8 +37,7 @@ BUILD/K64F/GCC_ARM/mbed-os/components/storage/blockdevice/COMPONENT_SD/SDBlockDe
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -56,12 +55,16 @@ BUILD/K64F/GCC_ARM/mbed-os/components/storage/blockdevice/COMPONENT_SD/SDBlockDe
  mbed-os/platform/internal/mbed_atomic_impl.h mbed-os/platform/CThunk.h \
  mbed-os/platform/internal/CThunkBase.h mbed-os/platform/CircularBuffer.h \
  mbed-os/platform/mbed_critical.h mbed-os/platform/Callback.h \
- mbed-os/platform/Transaction.h mbed-os/drivers/Timer.h \
- mbed-os/hal/ticker_api.h mbed-os/drivers/MbedCRC.h \
- mbed-os/drivers/internal/TableCRC.h mbed-os/hal/crc_api.h \
+ mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/Transaction.h \
+ mbed-os/drivers/Timer.h mbed-os/hal/ticker_api.h \
+ mbed-os/drivers/MbedCRC.h mbed-os/hal/crc_api.h \
  mbed-os/hal/static_pinmap.h mbed-os/hal/spi_api.h \
  mbed-os/hal/pwmout_api.h mbed-os/hal/analogin_api.h \
  mbed-os/hal/analogout_api.h mbed-os/hal/i2c_api.h \
  mbed-os/hal/serial_api.h mbed-os/hal/qspi_api.h mbed-os/hal/can_api.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/PeripheralPinMaps.h \
- mbed-os/rtos/ThisThread.h
+ mbed-os/rtos/ThisThread.h mbed-os/platform/mbed_debug.h

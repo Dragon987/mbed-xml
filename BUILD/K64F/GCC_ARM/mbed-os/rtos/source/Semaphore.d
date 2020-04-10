@@ -10,10 +10,10 @@ BUILD/K64F/GCC_ARM/mbed-os/rtos/source/Semaphore.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/rtos/Kernel.h mbed-os/platform/mbed_assert.h \
- mbed-os/platform/mbed_critical.h mbed-os/platform/mbed_error.h \
- mbed-os/platform/mbed_retarget.h mbed-os/platform/source/mbed_os_timer.h \
+ mbed-os/platform/NonCopyable.h mbed-os/rtos/Kernel.h \
+ mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_critical.h \
+ mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
+ mbed-os/platform/source/mbed_os_timer.h \
  mbed-os/platform/source/SysTimer.h mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \

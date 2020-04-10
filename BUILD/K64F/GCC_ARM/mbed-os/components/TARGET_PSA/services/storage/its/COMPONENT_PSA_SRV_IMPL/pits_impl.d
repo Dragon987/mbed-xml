@@ -8,9 +8,7 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_
  mbed-os/features/storage/blockdevice/BufferedBlockDevice.h \
  mbed-os/features/storage/blockdevice/BlockDevice.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/mbed_debug.h mbed-os/rtos/Mutex.h \
- mbed-os/rtos/mbed_rtos_types.h \
+ mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h \
@@ -19,7 +17,9 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/ScopedLock.h \
+ mbed-os/platform/ScopedLock.h mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_error.h \
+ mbed-os/platform/mbed_retarget.h \
  mbed-os/components/TARGET_PSA/inc/psa/internal_trusted_storage.h \
  mbed-os/components/TARGET_PSA/services/storage/its/psa_prot_internal_storage.h \
  mbed-os/components/TARGET_PSA/inc/psa/error.h \
@@ -27,7 +27,6 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_
  mbed-os/platform/mbed_toolchain.h \
  mbed-os/components/TARGET_PSA/services/storage/common/psa_storage_common_impl.h \
  mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_PSA_SRV_IMPL/pits_impl.h \
- mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
  mbed-os/features/storage/kvstore/kv_map/KVMap.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/SingletonPtr.h \
  mbed-os/platform/mbed_assert.h mbed-os/platform/mbed_atomic.h \
@@ -68,6 +67,10 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/storage/its/COMPONENT_
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/FileBase.h mbed-os/platform/FileHandle.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_poll.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/mbed_poll.h \
  mbed-os/platform/DirHandle.h mbed-os/platform/FileSystemLike.h \
  mbed-os/platform/FileSystemHandle.h

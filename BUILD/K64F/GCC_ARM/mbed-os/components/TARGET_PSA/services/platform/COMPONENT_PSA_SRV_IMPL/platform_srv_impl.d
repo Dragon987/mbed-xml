@@ -9,6 +9,7 @@ BUILD/K64F/GCC_ARM/mbed-os/components/TARGET_PSA/services/platform/COMPONENT_PSA
  mbed-os/components/TARGET_PSA/inc/psa/storage_common.h \
  mbed-os/components/TARGET_PSA/services/platform/COMPONENT_PSA_SRV_IMPL/platform_srv_impl.h \
  mbed-os/components/TARGET_PSA/inc/psa/client.h \
+ mbed-os/components/TARGET_PSA/inc/psa/tfm_platform_api.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12.h \

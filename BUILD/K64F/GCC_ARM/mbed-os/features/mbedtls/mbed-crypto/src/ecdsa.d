@@ -13,4 +13,5 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/ecdsa.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_time.h \
- mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h

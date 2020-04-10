@@ -8,6 +8,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/ecp.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/bignum.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/threading.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_time.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ecp_internal.h

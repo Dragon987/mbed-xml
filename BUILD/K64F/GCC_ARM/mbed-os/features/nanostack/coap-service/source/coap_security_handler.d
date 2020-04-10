@@ -31,6 +31,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/coap-service/source/coap_security_
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/entropy_poll.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ctr_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/frameworks/nanostack-libservice/mbed-client-libservice/ns_trace.h \
  mbed-os/features/frameworks/nanostack-libservice/mbed-client-libservice/ns_types.h \
  mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h \

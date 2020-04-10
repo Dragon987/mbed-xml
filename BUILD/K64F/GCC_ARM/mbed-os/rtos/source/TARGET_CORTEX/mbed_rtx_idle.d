@@ -37,7 +37,7 @@ BUILD/K64F/GCC_ARM/mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_idle.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/platform/source/mbed_os_timer.h \
  mbed-os/platform/source/SysTimer.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h mbed-os/platform/mbed_atomic.h \
+ mbed-os/platform/mbed_atomic.h \
  mbed-os/platform/cxxsupport/mstd_type_traits \
  mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \

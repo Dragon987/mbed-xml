@@ -46,8 +46,11 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/nanostack-hal-mbed-cmsis-rtos/arm_
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/Callback.h mbed-os/hal/lp_ticker_api.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/Callback.h \
+ mbed-os/platform/cxxsupport/mstd_new \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/hal/lp_ticker_api.h \
  mbed-os/drivers/Timer.h mbed-os/platform/platform.h \
  mbed-os/platform/mbed_retarget.h mbed-os/drivers/Ticker.h \
  mbed-os/events/Event.h mbed-os/events/EventQueue.h \

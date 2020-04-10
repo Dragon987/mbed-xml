@@ -2,8 +2,14 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/PolledQueue.o: \
  mbed-os/drivers/source/usb/PolledQueue.cpp \
  BUILD/K64F/GCC_ARM/mbed_config.h mbed-os/drivers/internal/PolledQueue.h \
  mbed-os/drivers/internal/TaskQueue.h mbed-os/drivers/internal/TaskBase.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
  mbed-os/drivers/internal/LinkEntry.h mbed-os/platform/mbed_critical.h \
  mbed-os/drivers/internal/LinkedList.h \
  mbed-os/drivers/internal/LinkedListBase.h mbed-os/events/mbed_events.h \
@@ -15,9 +21,8 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/PolledQueue.o: \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/events/Event.h mbed-os/events/UserAllocatedEvent.h \
- mbed-os/platform/mbed_atomic.h \
+ mbed-os/platform/NonCopyable.h mbed-os/events/Event.h \
+ mbed-os/events/UserAllocatedEvent.h mbed-os/platform/mbed_atomic.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/fsl_device_registers.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12.h \
@@ -28,7 +33,5 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/usb/PolledQueue.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/system_MK64F12.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/MK64F12_features.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis_nvic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/events/mbed_shared_queues.h

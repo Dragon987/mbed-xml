@@ -33,4 +33,5 @@ BUILD/K64F/GCC_ARM/mbed-os/hal/mbed_compat.o: mbed-os/hal/mbed_compat.c \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/hal/pinmap.h mbed-os/hal/i2c_api.h mbed-os/hal/buffer.h \
  mbed-os/hal/spi_api.h mbed-os/hal/dma_api.h mbed-os/hal/gpio_api.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h
+ mbed-os/hal/reset_reason_api.h mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/mbed_preprocessor.h

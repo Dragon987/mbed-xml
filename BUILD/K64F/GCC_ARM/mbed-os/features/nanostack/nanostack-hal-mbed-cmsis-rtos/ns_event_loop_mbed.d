@@ -27,8 +27,13 @@ BUILD/K64F/GCC_ARM/mbed-os/features/nanostack/nanostack-hal-mbed-cmsis-rtos/ns_e
  mbed-os/platform/mbed_error.h mbed-os/platform/mbed_retarget.h \
  mbed-os/events/mbed_shared_queues.h mbed-os/events/EventQueue.h \
  mbed-os/events/equeue.h mbed-os/events/internal/equeue_platform.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/platform/NonCopyable.h \
  mbed-os/events/Event.h \
  mbed-os/features/nanostack/nanostack-hal-mbed-cmsis-rtos/ns_event_loop_mutex.h \
  mbed-os/features/nanostack/nanostack-hal-mbed-cmsis-rtos/ns_event_loop.h

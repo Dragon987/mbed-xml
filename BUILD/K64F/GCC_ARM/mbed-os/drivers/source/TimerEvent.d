@@ -32,6 +32,4 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/TimerEvent.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_toolchain.h \
- mbed-os/platform/mbed_preprocessor.h mbed-os/platform/mbed_debug.h \
- mbed-os/hal/us_ticker_api.h
+ mbed-os/platform/NonCopyable.h mbed-os/hal/us_ticker_api.h

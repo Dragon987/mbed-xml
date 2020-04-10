@@ -1,5 +1,5 @@
 BUILD/K64F/GCC_ARM/mbed-os/hal/mbed_pinmap_default.o: \
- mbed-os/hal/mbed_pinmap_default.c BUILD/K64F/GCC_ARM/mbed_config.h \
+ mbed-os/hal/mbed_pinmap_default.cpp BUILD/K64F/GCC_ARM/mbed_config.h \
  mbed-os/hal/pinmap.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/PinNames.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/device/cmsis.h \
@@ -33,4 +33,6 @@ BUILD/K64F/GCC_ARM/mbed-os/hal/mbed_pinmap_default.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_edma.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/api/gpio_object.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
- mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h
+ mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
+ mbed-os/hal/serial_api.h mbed-os/hal/pinmap.h mbed-os/hal/buffer.h \
+ mbed-os/hal/dma_api.h

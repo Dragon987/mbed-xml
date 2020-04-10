@@ -6,8 +6,14 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/TLSSocketWrapper.o: \
  mbed-os/features/netsocket/SocketAddress.h \
  mbed-os/features/netsocket/nsapi_types.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/rtos/EventFlags.h \
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/mbed_toolchain.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator mbed-os/rtos/EventFlags.h \
  mbed-os/rtos/mbed_rtos_types.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
  mbed-os/rtos/mbed_rtos1_types.h \
@@ -17,8 +23,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/TLSSocketWrapper.o: \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_conf.h \
  mbed-os/targets/TARGET_Freescale/mbed_rtx.h \
- mbed-os/platform/NonCopyable.h mbed-os/platform/mbed_debug.h \
- mbed-os/platform/Callback.h \
+ mbed-os/platform/NonCopyable.h mbed-os/platform/Callback.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/inc/mbedtls/config.h \
  mbed-os/features/mbedtls/platform/inc/platform_mbed.h \
@@ -43,6 +48,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/TLSSocketWrapper.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha512.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/ctr_drbg.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/aes.h \
+ mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/hmac_drbg.h \
  mbed-os/features/mbedtls/inc/mbedtls/error.h mbed-os/drivers/Timer.h \
  mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/TARGET_FRDM/device.h \
@@ -81,8 +87,6 @@ BUILD/K64F/GCC_ARM/mbed-os/features/netsocket/TLSSocketWrapper.o: \
  mbed-os/events/internal/equeue_platform.h \
  mbed-os/rtos/mbed_rtos_storage.h mbed-os/events/Event.h \
  mbed-os/events/UserAllocatedEvent.h mbed-os/platform/mbed_atomic.h \
- mbed-os/platform/cxxsupport/mstd_type_traits \
- mbed-os/platform/cxxsupport/mstd_cstddef \
  mbed-os/platform/internal/mbed_atomic_impl.h \
  mbed-os/events/mbed_shared_queues.h \
  mbed-os/features/frameworks/mbed-trace/mbed-trace/mbed_trace.h \

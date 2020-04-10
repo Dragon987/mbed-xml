@@ -35,6 +35,11 @@ BUILD/K64F/GCC_ARM/mbed-os/drivers/source/InterruptIn.o: \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/us_ticker_defines.h \
  mbed-os/targets/TARGET_Freescale/TARGET_MCUXpresso_MCUS/TARGET_MCU_K64F/drivers/fsl_pit.h \
  mbed-os/hal/gpio_api.h mbed-os/hal/pinmap.h mbed-os/hal/gpio_irq_api.h \
- mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
- mbed-os/platform/mbed_critical.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_debug.h
+ mbed-os/platform/Callback.h mbed-os/platform/cxxsupport/mstd_cstddef \
+ mbed-os/platform/cxxsupport/mstd_new mbed-os/platform/mbed_assert.h \
+ mbed-os/platform/cxxsupport/mstd_type_traits \
+ mbed-os/platform/cxxsupport/mstd_functional \
+ mbed-os/platform/cxxsupport/mstd_memory \
+ mbed-os/platform/cxxsupport/mstd_utility \
+ mbed-os/platform/cxxsupport/mstd_iterator \
+ mbed-os/platform/mbed_critical.h mbed-os/platform/NonCopyable.h

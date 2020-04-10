@@ -14,6 +14,7 @@ BUILD/K64F/GCC_ARM/mbed-os/features/mbedtls/mbed-crypto/src/pkparse.o: \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/oid.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/cipher.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_util.h \
+ mbed-os/features/mbedtls/inc/mbedtls/error.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/pem.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform.h \
  mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/platform_time.h
