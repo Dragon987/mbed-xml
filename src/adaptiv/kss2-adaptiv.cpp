@@ -1,6 +1,7 @@
 #include "kss2-adaptiv.h"
 
 #include <cstdarg>
+#include <string.h>
 
 #include "dxml.h"
 
@@ -70,7 +71,7 @@ static void load_fases(dxml_t xml, SFaza faze[BR_FAZA])
     );
 
     auto stage = dxml_child(xml, "STAGE");
-    for (int i = 0; stage && i < BR_FAZA; stage->next)
+    for (int i = 0; stage && i < BR_FAZA; stage = stage->next)
         load_stage(stage, faze[i++]);
 }
 
@@ -132,6 +133,35 @@ static void load_stage_change_plans(dxml_t xml, SPlanIzmenaFaza change_plans[BR_
             load_stage_change_plan(plan, change_plans[get_number_from_dxml(plan, ATTR_VAL, "NO")]);
         else
             break;
+}
+
+static void load_detektor(dxml_t xml, uchar detektor[16])
+{
+    // char* buffer = new char[strlen("detector_description_16") + 1];
+    auto description = dxml_child(xml, "detector_description_1");
+    for (; description; description = description->sibling) {
+        auto number_start = strchr(strchr(description->name, '_') + 1, '_') + 1;
+        uint idx = std::atoi(number_start);
+        detektor[idx] = get_number_from_dxml(description, TXT_VAL);
+    }
+}
+
+static void load_detector_config(dxml_t xml, DET_descr detektori[BR_DETEKTORA])
+{
+    auto detector_config = dxml_child(xml, "DETECTORS_CONFIGURATION");
+    auto no_detektora = get_number_from_dxml(
+        dxml_child(detector_config, "NUMNER_OF_DETEKTORS"),
+        TXT_VAL
+    );
+
+    dxml_t detektor = dxml_child(detector_config, "DETECTOR");
+    for (; detektor; detektor = detektor->next)
+    {
+        auto detektor_idx = get_number_from_dxml(detektor, ATTR_VAL, "NO");
+        if (detektor_idx > BR_DETEKTORA)
+            printf("Los NO atribut detektora\n\r");
+        load_detektor(detektor, detektori[detektor_idx].detector_description);
+    }
 }
 
 }
