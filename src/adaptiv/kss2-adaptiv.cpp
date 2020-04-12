@@ -164,4 +164,6 @@ static void load_detector_config(dxml_t xml, DET_descr detektori[BR_DETEKTORA])
     }
 }
 
+static void load_adaptiv_operation_variables(dxml_t xml, )
+
 }
