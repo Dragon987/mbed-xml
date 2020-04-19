@@ -5,6 +5,12 @@
 
 #include "dxml.h"
 
+/*
+* Trenutno je ostalo da se zavrsi:
+    load_interstage_sequences - u xml-u postoji 56 tagova a vrednost odgovarajuceg makra je 16,
+    load_adaptiv_opeartion_variables - objasnjenje je u f-ji
+*/
+
 namespace kss2_adaptiv
 {
 
@@ -16,10 +22,13 @@ inline static int get_number_from_dxml(dxml_t node, const uint mask, ...)
     std::va_list args;
     va_start(args, node);
 
-    if (mask & ATTR_VAL) {
-        const char* attr_name = va_arg(args, const char*);
+    if (mask & ATTR_VAL)
+    {
+        const char *attr_name = va_arg(args, const char *);
         return std::atoi(dxml_attr(node, attr_name));
-    } else if (mask & TXT_VAL) {
+    }
+    else if (mask & TXT_VAL)
+    {
         return std::atoi(node->txt);
     }
 
@@ -27,17 +36,17 @@ inline static int get_number_from_dxml(dxml_t node, const uint mask, ...)
     return 0;
 }
 
-inline static void fill_lower_higher_int(dxml_t xml, uchar& lower, uchar& higher)
+inline static void fill_lower_higher_int(dxml_t xml, uchar &lower, uchar &higher)
 {
     int val = get_number_from_dxml(xml, TXT_VAL);
     lower = (uchar)(val);
     higher = (uchar)(val >> 8);
 }
 
-static void load_stage(dxml_t xml, SFaza& stage)
+static void load_stage(dxml_t xml, SFaza &stage)
 {
     stage.broj = get_number_from_dxml(dxml_child(xml, "STAGE_NUMBER"), TXT_VAL);
-    
+
     auto duration = dxml_child(xml, "STAGE_DURATION");
 
     fill_lower_higher_int(dxml_child(duration, "min"), stage.min_l, stage.min_h);
@@ -66,9 +75,8 @@ static void load_fases(dxml_t xml, SFaza faze[BR_FAZA])
     auto signal_stages = dxml_child(xml, "SIGNAL_STAGES");
 
     int no_signal_stages = get_number_from_dxml(
-        dxml_child(signal_stages, "NUMBER_OF_SIGNAL_STAGES"), 
-        TXT_VAL
-    );
+        dxml_child(signal_stages, "NUMBER_OF_SIGNAL_STAGES"),
+        TXT_VAL);
 
     auto stage = dxml_child(xml, "STAGE");
     for (int i = 0; stage && i < BR_FAZA; stage = stage->next)
@@ -81,42 +89,39 @@ static void load_interstage_sequences(dxml_t xml, SPrelaz sequences[BR_PRELAZA])
 
     int no_sequences = get_number_from_dxml(
         dxml_child(interstage_sequences, "NUMBER_OF_INTERSTAGE_SEQUENCES"),
-        TXT_VAL
-    );
+        TXT_VAL);
 
     /// TO-DO
     /// Proveri sa Rasom da li je broj od 1 do 16 ili od 1 do 56
-
 }
 
-template<typename T>
-inline static void assign_xml_values(dxml_t xml, const char* name, T& value)
+template <typename T>
+inline static void assign_xml_values(dxml_t xml, const char *name, T &value)
 {
     value = get_number_from_dxml(
         dxml_child(xml, name),
-        TXT_VAL
-    );
+        TXT_VAL);
 }
 
-static void load_stage(dxml_t xml, SParametriFaze& stage)
+static void load_stage(dxml_t xml, SParametriFaze &stage)
 {
     assign_xml_values(xml, "stage_number", stage.broj);
     fill_lower_higher_int(dxml_child(xml, "stage_duration"), stage.opt_l, stage.opt_h);
 }
 
-static void load_stage_change_plan(dxml_t xml, SPlanIzmenaFaza& plan)
+static void load_stage_change_plan(dxml_t xml, SPlanIzmenaFaza &plan)
 {
     assign_xml_values(xml, "STAGE_CHANGE_PLAN_NUMBER", plan.broj_PIFa);
     assign_xml_values(xml, "NUMBER_OF_STAGES", plan.broj_faza);
     assign_xml_values(xml, "CYCLE", plan.duzina_cyc);
     assign_xml_values(xml, "START_SECOND", plan.start_sec);
-    
+
     dxml_t stage = dxml_child(dxml_child(xml, "STAGES"), "STAGE");
     for (int i = 0; stage && i < BR_FAZA_uPIFu; stage = stage->next, ++i)
         load_stage(stage, plan.faze[i]);
 
-    fill_lower_higher_int(dxml_child(xml, "STAGE_CHANGE_PLAN_CRC"), 
-        plan.CRC_PlanIzmena_l, plan.CRC_PlanIzmena_h);
+    fill_lower_higher_int(dxml_child(xml, "STAGE_CHANGE_PLAN_CRC"),
+                          plan.CRC_PlanIzmena_l, plan.CRC_PlanIzmena_h);
 }
 
 static void load_stage_change_plans(dxml_t xml, SPlanIzmenaFaza change_plans[BR_PIFOVA])
@@ -124,8 +129,7 @@ static void load_stage_change_plans(dxml_t xml, SPlanIzmenaFaza change_plans[BR_
     auto stage_change_plans = dxml_child(xml, "STAGE_CHANGE_PLANS");
     int no_change_plans = get_number_from_dxml(
         dxml_child(stage_change_plans, "STAGE_CHANGE_PLAN_NUMBER"),
-        TXT_VAL
-    );
+        TXT_VAL);
 
     auto plan = dxml_child(stage_change_plans, "STAGE_CHANGE_PLAN");
     for (int i = 0; plan && i < BR_PIFOVA; plan = plan->next, ++i)
@@ -139,7 +143,8 @@ static void load_detektor(dxml_t xml, uchar detektor[16])
 {
     // char* buffer = new char[strlen("detector_description_16") + 1];
     auto description = dxml_child(xml, "detector_description_1");
-    for (; description; description = description->sibling) {
+    for (; description; description = description->sibling)
+    {
         auto number_start = strchr(strchr(description->name, '_') + 1, '_') + 1;
         uint idx = std::atoi(number_start);
         detektor[idx] = get_number_from_dxml(description, TXT_VAL);
@@ -151,8 +156,7 @@ static void load_detector_config(dxml_t xml, DET_descr detektori[BR_DETEKTORA])
     auto detector_config = dxml_child(xml, "DETECTORS_CONFIGURATION");
     auto no_detektora = get_number_from_dxml(
         dxml_child(detector_config, "NUMNER_OF_DETEKTORS"),
-        TXT_VAL
-    );
+        TXT_VAL);
 
     dxml_t detektor = dxml_child(detector_config, "DETECTOR");
     for (; detektor; detektor = detektor->next)
@@ -164,6 +168,106 @@ static void load_detector_config(dxml_t xml, DET_descr detektori[BR_DETEKTORA])
     }
 }
 
-static void load_adaptiv_operation_variables(dxml_t xml, )
+static void load_adaptiv_operation_variables(dxml_t xml, uchar data[BR_RAM_LOKACIJA])
+{
+    /* Treba proveriti da li su podaci uneseni u dobrom redosledu */
 
+    dxml_t vars = dxml_child(xml, "ADAPTIV_OPERATION_VARIABLES");
+    uchar *current = data;
+    auto system_vars = dxml_child(vars, "SYSTEM_VARIABLES");
+    for (auto t = system_vars->child; t; t = t->sibling)
+    {
+        *(data++) = get_number_from_dxml(t, TXT_VAL);
+        if (!strcmp(t->name, "VARIABLE"))
+            for (t = t->next; t; t = t->next)
+                *(data++) = get_number_from_dxml(t, TXT_VAL);
+    }
+
+    /* Ne razumem kako da slozim TIMEDEPENDET_VARIABLES */
 }
+
+static void load_nodes(dxml_t node, algo_stage &stage)
+{
+    auto no_nodes = get_number_from_dxml(dxml_child(node->parent, "NUMBER_OF_NODES"),
+                                         TXT_VAL);
+    dxml_t node = dxml_child(node->parent, "NODE");
+    for (; node; node = node->next)
+    {
+        auto n_idx = get_number_from_dxml(node, ATTR_VAL, "NO");
+        SA_cvor &current = stage[n_idx];
+        current.uslov = get_number_from_dxml(dxml_child(node, "CONDITION_TYPE"), TXT_VAL);
+        current.uslov_data = get_number_from_dxml(dxml_child(node, "CONDITION_JOKER"), TXT_VAL);
+
+        dxml_t data = dxml_child(node, "CONDITION_DATA");
+        for (auto d = dxml_child(data, "data"); d; d = d->next)
+        {
+            auto d_idx = get_number_from_dxml(d, ATTR_VAL, "NO");
+            current.U.data[d_idx] = get_number_from_dxml(d, TXT_VAL);
+        }
+
+        current.fun = get_number_from_dxml(dxml_child(node, "ACTION_TYPE"), TXT_VAL);
+        current.fun_data = get_number_from_dxml(dxml_child(node, "ACTION_JOKER"), TXT_VAL);
+        data = dxml_child(node, "ACTION_DATA");
+        for (auto d = dxml_child(data, "data"); d; d = d->next)
+        {
+            auto d_idx = get_number_from_dxml(d, ATTR_VAL, "NO");
+            current.F.data[d_idx] = get_number_from_dxml(d, TXT_VAL);
+        }
+
+        dxml_t next = dxml_child(node, "NEXT_NODE");
+        current.u_SA.sledeci.pozitivan = get_number_from_dxml(dxml_child(next, "true_next"), TXT_VAL);
+        current.u_SA.sledeci.negativan = get_number_from_dxml(dxml_child(next, "false_next"), TXT_VAL);
+        current.u_SA.sledeci.p_end = get_number_from_dxml(dxml_child(next, "true_end"), TXT_VAL);
+        current.u_SA.sledeci.n_end = get_number_from_dxml(dxml_child(next, "false_end"), TXT_VAL);
+        current.u_SA.sledeci.rezerva = get_number_from_dxml(dxml_child(next, "reserve"), TXT_VAL);
+    }
+}
+
+static void load_operation_algorithms(dxml_t xml, algo_stage stages[BR_ALG_FAZA])
+{
+    dxml_t adaptiv = dxml_child(xml, "ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES");
+    auto no_stages = get_number_from_dxml(dxml_child(adaptiv, "NUMBER_OF_STAGES"),
+                                          TXT_VAL);
+
+    dxml_t stage = dxml_child(adaptiv, "STAGE");
+    for (; stage; stage = stage->next)
+    {
+        auto s_idx = get_number_from_dxml(stage, ATTR_VAL, "NO");
+        load_nodes(dxml_child(stage, "NODE"), stages[s_idx]);
+    }
+}
+
+static void load_op_algos_for_interstages(dxml_t xml, InterstageAlgo interstages[BR_ALG_PRELAZA])
+{
+    dxml_t inters = dxml_child(xml, "ADAPTIV_OPERATION_ALGORITHMS_FOR_INTERSTAGES");
+    auto no_inters = get_number_from_dxml(dxml_child(inters, "NUMBER_OF_INTERSTAGES"),
+                                          TXT_VAL);
+
+    dxml_t istage = dxml_child(inters, "INTERSTAGE");
+    for (; istage; istage = istage->next)
+    {
+        auto i_idx = get_number_from_dxml(istage, ATTR_VAL, "NO");
+        load_nodes(dxml_child(istage, "NODE"), interstages[i_idx].nodes);
+        interstages[i_idx].crc = get_number_from_dxml(dxml_child(istage, "CRC_OF_INTERSTAGE_ALGORITHM"),
+                                                      TXT_VAL);
+    }
+
+    auto crc = get_number_from_dxml(dxml_child(inters, "CRC_OF_ALGORITHMS_FOR_INTERSTAGES"),
+                                    TXT_VAL);
+}
+
+void load(const char* filename, SFaza faze[BR_FAZA], SPrelaz sequences[BR_PRELAZA], SPlanIzmenaFaza change_plans[BR_FAZA], DET_descr detektori[BR_DETEKTORA], uchar data[BR_RAM_LOKACIJA], kss2_adaptiv::algo_stage stages[BR_FAZA], InterstageAlgo interstages[BR_ALG_PRELAZA])
+{
+    auto fp = fopen(filename, "r");
+    auto xml = dxml_parse_fp(fp);
+
+    load_fases(xml, faze);
+    load_interstage_sequences(xml, sequences);
+    load_stage_change_plans(xml, change_plans);
+    load_detector_config(xml, detektori);
+    load_adaptiv_operation_variables(xml, data);
+    load_operation_algorithms(xml, stages);
+    load_op_algos_for_interstages(xml, interstages);
+}
+
+} // namespace kss2_adaptiv

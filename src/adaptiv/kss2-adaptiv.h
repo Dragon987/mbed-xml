@@ -244,6 +244,13 @@ struct SA_cvor
   union U_SA_sledeci u_SA;
 };
 
-uint *get_ram_locations();
+// Koristi se za ADAPTIV_OPERATION_ALGORITHMS_FOR_STAGES
+using algo_stage = SA_cvor[BR_CVOROVA_AF];
+
+struct InterstageAlgo
+{
+  SA_cvor nodes[BR_CVOROVA_AF];
+  short crc;
+}
 
 } // namespace kss2_adaptiv
