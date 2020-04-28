@@ -1,5 +1,7 @@
 #include "kss2-config.h"
-#include "common.h"
+#include "../common.h"
+#include "mbed.h"
+#include "dxml/dxml.h"
 
 enum ConfigDataErrors
 {
@@ -42,7 +44,6 @@ static const char *FindInStr(const char *str, char charToFind, uchar start)
 #define FILL_VALUE_NO_ASSERT(parent, child, childName, dest) \
     CHECK_IF_CHILD_EXISTS(parent, child, childName);         \
     dest = atoi(child->txt)
-
 
 namespace kss2_config
 {
@@ -637,13 +638,264 @@ auto load(const char *fileName,
     return ConfigDataNoErrors;
 }
 
+void create_io(dxml_t xml, const SIOSijl& s, int idx)
+{
+    dxml_t io = create_tag_with_attr(xml, "IO", "NO", idx);
+    for (int i = 0; i < 6; ++i)
+    {
+        dxml_t out = create_tag_with_attr(io, "OUT", "NO", i + 1);
+        create_tag_with_txt(out, "sub", s.sijlelem[i].sub);
+        create_tag_with_txt(out, "sigr", s.sijlelem[i].sigr);
+        create_tag_with_txt(out, "valid", s.sijlelem[i].valid);
+        create_tag_with_txt(out, "collor", s.sijlelem[i].collor);
+        create_tag_with_txt(out, "led", s.sijlelem[i].led);
+        create_tag_with_txt(out, "osig", s.sijlelem[i].osig);
+        create_tag_with_txt(out, "yell", s.sijlelem[i].yell);
+        create_tag_with_txt(out, "sig", s.sijlelem[i].osig);
+    }
+}
+
 auto save(const char *fileName,
           const EEfolder *ef,
           const SSPIfolder *sspi,
-          const SIOSijl *ios,
-          const SConflP *cc,
+          const SIOSijl ios[NO_IO_MAX],
+          const SConflP cc[NO_CONFL_COUPLES_MAX],
           const uchar *mg) -> int
 {
-    return 0;
+    dxml_t xml = dxml_new("CONFIG_DATA");
+
+    dxml_t controller_config = dxml_add_child(xml, "CONTROLLER_CONFIG", 0);
+
+    dxml_t eefolder = dxml_add_child(controller_config, "EEfolder", 0);
+
+    create_tag_with_txt(eefolder, "nr_sg",    ef->noSigGr);
+    create_tag_with_txt(eefolder, "no_IO",    ef->noIOadr);
+    create_tag_with_txt(eefolder, "no_CFP",   ef->noCflPr);
+    create_tag_with_txt(eefolder, "no_FB",    ef->noCrkSij);
+    create_tag_with_txt(eefolder, "EEAdr", 4, (uchar*)&ef->adrese);
+    create_tag_with_txt(eefolder, "res1",     ef->e);
+    create_tag_with_txt(eefolder, "res2",     ef->f);
+    create_tag_with_txt(eefolder, "mGT_CRC",  ef->mGreenTblCRC);
+    create_tag_with_txt(eefolder, "CFT_CRC",  ef->ConflPTblCRC);
+    create_tag_with_txt(eefolder, "IOT_CRC",  ef->SiGrIOTblCRC);
+
+    // </EEfolder>
+
+    dxml_t signal_groups = dxml_add_child(controller_config, "SIGNAL_GROUPS", 0);
+
+    create_tag_with_txt(signal_groups, "nr_vsg", sspi->brvg);
+    create_tag_with_txt(signal_groups, "nr_tsg", sspi->brtg);
+    create_tag_with_txt(signal_groups, "nr_psg", sspi->brpg);
+    create_tag_with_txt(signal_groups, "nr_asg", sspi->brstrel);
+
+    // </SIGNAL_GROUPS>
+
+    dxml_t transient_times = dxml_add_child(controller_config, "TRANSIENT_TIMES", 0);
+
+    create_tag_with_txt(transient_times, "ry_t", sspi->czuto_v);
+    create_tag_with_txt(transient_times, "y_t", sspi->zuto_v);
+
+    // </TRANSIENT_TIMES>
+
+    dxml_t start_times = dxml_add_child(controller_config, "START_TIMES", 0);
+    auto &st = sspi->start_times;
+
+    create_tag_with_txt(start_times, "yfl", st.zuti_treptac);
+    create_tag_with_txt(start_times, "y", st.sve_zuto);
+    create_tag_with_txt(start_times, "ar", st.sve_crveno);
+
+    // </START_TIMES>
+
+    dxml_t pnp = dxml_add_child(controller_config, "PLUG_AND_PLAY", 0);
+    create_tag_with_txt(pnp, "data", 3, (uchar*)sspi->PnP);
+    // </PLUG_AND_PLAY>
+
+    create_tag_with_txt(controller_config, "REC_PER_MIN", sspi->zapis_na_minuta);
+    create_tag_with_txt(controller_config, "FPLAN_NUMBER", sspi->fors_plan);
+    create_tag_with_txt(controller_config, "NROF_SIG_PLANS", sspi->broj_planova);
+    create_tag_with_txt(controller_config, "CORRECT_FLAG", sspi->ispravnost);
+
+    dxml_t time_tabel_crc = dxml_add_child(controller_config, "TIME_TABLE_CRC", 0);
+
+    create_tag_with_txt(time_tabel_crc, "day", sspi->CRC_dana);
+    create_tag_with_txt(time_tabel_crc, "holiday", sspi->CRC_praznika);
+    create_tag_with_txt(time_tabel_crc, "specdate", sspi->CRC_datuma);
+
+    // </TIME_TABLE_CRC>
+
+    dxml_t bios = dxml_add_child(controller_config, "BIOS", 0);
+
+    create_tag_with_txt(bios, "mod",        sspi->Bios.proc.mod);
+    create_tag_with_txt(bios, "cord_loc",   sspi->Bios.proc.koord_lok);
+    create_tag_with_txt(bios, "fors_table", sspi->Bios.proc.fors_tab);
+    create_tag_with_txt(bios, "vh_fl",      sspi->Bios.proc.v_trep);
+    create_tag_with_txt(bios, "pd_fl",      sspi->Bios.proc.p_trep);
+    create_tag_with_txt(bios, "adaptive",   sspi->Bios.proc.detektor);
+    create_tag_with_txt(bios, "stages",     sspi->Bios.proc.najava);
+
+    // </BIOS>
+
+    dxml_t resart = dxml_add_child(controller_config, "RESART", 0);
+
+    create_tag_with_txt(resart, "nrof_restarts", sspi->Restart.no);
+    create_tag_with_txt(resart, "nrof_restarts", sspi->Restart.time);
+
+    // </RESART>
+
+    dxml_t last_error = dxml_add_child(controller_config, "LAST_ERROR", 0);
+    
+    dxml_t le_drop = dxml_add_child(last_error, "LAST_ERROR_DROP", 0);
+
+    dxml_t le_drop_error = dxml_add_child(le_drop, "ERROR", 0);
+
+    create_tag_with_txt(le_drop_error, "type", sspi->ErrorTimeComm.sdrop.serror.type);
+    create_tag_with_txt(le_drop_error, "address", sspi->ErrorTimeComm.sdrop.serror.address);
+    create_tag_with_txt(le_drop_error, "data", sspi->ErrorTimeComm.sdrop.serror.data);
+
+    // </ERROR>
+
+    create_tag_with_txt(le_drop, "PLAN_NUMBER", sspi->ErrorTimeComm.sdrop.broj_plana);
+    create_tag_with_txt(le_drop, "CYC_SEC", sspi->ErrorTimeComm.sdrop.vreme_u_ciklusu);
+
+    dxml_t le_drop_error_rt = dxml_add_child(le_drop, "ERROR_REAL_TIME", 0);
+
+    create_tag_with_txt(le_drop_error_rt, "hour", sspi->ErrorTimeComm.sdrop.realtime.hour);
+    create_tag_with_txt(le_drop_error_rt, "min", sspi->ErrorTimeComm.sdrop.realtime.min);
+    create_tag_with_txt(le_drop_error_rt, "sec", sspi->ErrorTimeComm.sdrop.realtime.sec);
+    create_tag_with_txt(le_drop_error_rt, "date", sspi->ErrorTimeComm.sdrop.realtime.date);
+    create_tag_with_txt(le_drop_error_rt, "month", sspi->ErrorTimeComm.sdrop.realtime.month);
+    create_tag_with_txt(le_drop_error_rt, "year", sspi->ErrorTimeComm.sdrop.realtime.year);
+
+    // </ERROR_REAL_TIME>
+
+    // </LAST_ERROR_DROP>
+
+    dxml_t le_nondrop = dxml_add_child(last_error, "LAST_ERROR_NONDROP", 0);
+
+    create_tag_with_txt(le_nondrop, "ERROR", 3, (uchar*)&sspi->ErrorTimeComm.snondrop.serror);
+
+    create_tag_with_txt(le_nondrop, "PLAN_NUMBER", sspi->ErrorTimeComm.sdrop.broj_plana);
+    create_tag_with_txt(le_nondrop, "CYC_SEC", sspi->ErrorTimeComm.sdrop.vreme_u_ciklusu);
+
+    dxml_t le_nondrop_error_rt = dxml_add_child(le_nondrop, "ERROR_REAL_TIME", 0);
+
+    create_tag_with_txt(le_nondrop_error_rt, "hour", sspi->ErrorTimeComm.sdrop.realtime.hour);
+    create_tag_with_txt(le_nondrop_error_rt, "min", sspi->ErrorTimeComm.sdrop.realtime.min);
+    create_tag_with_txt(le_nondrop_error_rt, "sec", sspi->ErrorTimeComm.sdrop.realtime.sec);
+    create_tag_with_txt(le_nondrop_error_rt, "date", sspi->ErrorTimeComm.sdrop.realtime.date);
+    create_tag_with_txt(le_nondrop_error_rt, "month", sspi->ErrorTimeComm.sdrop.realtime.month);
+    create_tag_with_txt(le_nondrop_error_rt, "year", sspi->ErrorTimeComm.sdrop.realtime.year);
+
+    // </ERROR_REAL_TIME>
+
+    // </LAST_ERROR_NONDROP>
+
+    dxml_t le_flags = dxml_add_child(last_error, "LAST_ERROR_FLAGS", 0);
+
+    create_tag_with_txt(le_flags, "drerr_pg1", sspi->ErrorTimeComm.sflags.drerr_pg1);
+    create_tag_with_txt(le_flags, "drerr_pg2", sspi->ErrorTimeComm.sflags.drerr_pg2);
+    create_tag_with_txt(le_flags, "drerr_pg3", sspi->ErrorTimeComm.sflags.drerr_pg3);
+    create_tag_with_txt(le_flags, "drerr_pg4", sspi->ErrorTimeComm.sflags.drerr_pg4);
+    create_tag_with_txt(le_flags, "drop_flag", sspi->ErrorTimeComm.sflags.drop);
+    create_tag_with_txt(le_flags, "nondrop_flag", sspi->ErrorTimeComm.sflags.nondrop);
+    create_tag_with_txt(le_flags, "CNFLBoard_mod_switch", sspi->ErrorTimeComm.sflags.prekidac);
+
+    // </LAST_ERROR_FLAGS>
+
+    // </LAST_ERROR>
+
+    dxml_t err_buff_ctrl = dxml_add_child(controller_config, "ERROR_BUFFER_CONTROL", 0);
+
+    create_tag_with_txt(err_buff_ctrl, "LAST_ERROR_IN_BUFFER", sspi->ErrorCtrl.brojac_buff);
+    
+    dxml_t idle = dxml_add_child(err_buff_ctrl, "IDLE", 0);
+
+    create_tag_with_txt(idle, "idle", sspi->ErrorCtrl.idle1);
+    create_tag_with_txt(idle, "idle", sspi->ErrorCtrl.idle);
+
+    dxml_t d = dxml_child(idle, "idle");
+    for (int i = 1; d; d = d->next, ++i)
+    {
+        char *c = new char[2];
+        c[1] = 0;
+        snprintf(c, 2, "%d", i);
+        dxml_set_attr(d, "NO", c);
+    }
+
+    // </IDLE>
+
+    // </ERROR_BUFFER_CONTROL>
+
+    create_tag_with_txt(controller_config, "SUMMER_WINTER", sspi->leto_zima);
+    create_tag_with_txt(controller_config, "NONE", sspi->none);
+
+    // </CONTROLLER_CONFIG>
+
+    dxml_t cnfl_board_config = dxml_add_child(xml, "CNFLBoard_CONFIG", 0);
+
+    dxml_t io_modules_table = dxml_add_child(cnfl_board_config, "IO_MODULES_TABLE", 0);
+
+    create_tag_with_txt(io_modules_table, "NUMBER_OF_IO_MODULES", NO_IO_MAX);
+    
+    for (int i = 0; i < NO_IO_MAX; ++i)
+    {
+        create_io(io_modules_table, ios[i], i + 1);
+    }
+
+    // </IO_MODULES_TABLE>
+
+    dxml_t conflict_couples = dxml_add_child(cnfl_board_config, "CONFLICT_COUPLES", 0);
+
+    create_tag_with_txt(conflict_couples, "NUMBER_OF_CONFLICT_COUPLES", NO_CONFL_COUPLES_MAX);
+
+    for (int i = 0; i < NO_CONFL_COUPLES_MAX; ++i)
+    {
+        char *txt = new char[4];
+        memset(txt, 0, 4);
+        if (i + 1 < 10)
+            snprintf(txt, 4, "00%d", i + 1);
+        else if (i + 1 < 100)
+            snprintf(txt, 4, "0%d", i + 1);
+        else
+            snprintf(txt, 4, "%d", i + 1);
+        
+        auto confl_couple = dxml_add_child(conflict_couples, "CONFLICT_COUPLE", 0);
+        dxml_set_attr(confl_couple, "NO", txt);
+        create_tag_with_txt(confl_couple, "signal_group_01", cc[i].sigr1);
+        create_tag_with_txt(confl_couple, "signal_group_02", cc[i].sigr2);
+        create_tag_with_txt(confl_couple, "ftime", cc[i].ftime);
+        create_tag_with_txt(confl_couple, "ltime", cc[i].ltime);
+    }
+
+    // </CONFLICT_COUPLES>
+
+    dxml_t mingreen_times = dxml_add_child(cnfl_board_config, "MINGREEN_TIMES", 0);
+    create_tag_with_txt(mingreen_times, "NUMBER_OF_MINGREEN_TIMES", NO_MIN_GREEN_MAX);
+
+    for (int i = 0; i < NO_MIN_GREEN_MAX; ++i)
+    {
+        char *txt = new char[4];
+        memset(txt, 0, 4);
+        if (i + 1 < 10)
+            snprintf(txt, 4, "00%d", i + 1);
+        else if (i + 1 < 100)
+            snprintf(txt, 4, "0%d", i + 1);
+        
+        dxml_t min_green = dxml_add_child(mingreen_times, "min_green", 0);
+        dxml_set_attr(min_green, "N", txt);
+        txt = new char[4];
+        memset(txt, 0, 4);
+        snprintf(txt, 4, "%d", mg[i]);
+        dxml_set_txt(min_green, txt);
+    }
+
+    // </CNFLBoard_CONFIG>
+
+    auto fp = fopen(fileName, "w");
+    auto xml_string = dxml_toxml(xml);
+
+    fwrite(xml_string, sizeof (char), strlen(xml_string), fp);
+    fclose(fp);
+    free(xml_string);
 }
 } // namespace kss2_config

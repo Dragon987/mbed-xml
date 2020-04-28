@@ -5,6 +5,8 @@
         "stat.h": "c",
         "chrono": "cpp",
         "random": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
     }
 }

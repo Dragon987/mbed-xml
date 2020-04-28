@@ -84,5 +84,7 @@ enum TimeTableErrors
 };
 
 int load(ssplan_t* planovi, stdan_t *dani, stpraznik_t *praznik, stdatum_t *datumi, const char* filename);
+void save(const ssplan_t* planovi, const stdan_t *dani, 
+          const stpraznik_t *praznik, stdatum_t *datumi, const char* filename);
 
 }

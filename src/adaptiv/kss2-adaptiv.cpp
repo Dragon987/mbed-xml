@@ -20,7 +20,7 @@ static constexpr uint TXT_VAL = 0b000000010;
 inline static int get_number_from_dxml(dxml_t node, const uint mask, ...)
 {
     std::va_list args;
-    va_start(args, node);
+    va_start(args, mask);
 
     if (mask & ATTR_VAL)
     {
@@ -186,11 +186,12 @@ static void load_adaptiv_operation_variables(dxml_t xml, uchar data[BR_RAM_LOKAC
     /* Ne razumem kako da slozim TIMEDEPENDET_VARIABLES */
 }
 
-static void load_nodes(dxml_t node, algo_stage &stage)
+static void load_nodes(dxml_t xml, algo_stage &stage)
 {
-    auto no_nodes = get_number_from_dxml(dxml_child(node->parent, "NUMBER_OF_NODES"),
+    auto no_nodes = get_number_from_dxml(dxml_child(xml->parent, "NUMBER_OF_NODES"),
                                          TXT_VAL);
-    dxml_t node = dxml_child(node->parent, "NODE");
+
+    dxml_t node = dxml_child(xml->parent, "NODE");
     for (; node; node = node->next)
     {
         auto n_idx = get_number_from_dxml(node, ATTR_VAL, "NO");

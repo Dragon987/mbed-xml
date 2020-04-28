@@ -251,6 +251,6 @@ struct InterstageAlgo
 {
   SA_cvor nodes[BR_CVOROVA_AF];
   short crc;
-}
+};
 
 } // namespace kss2_adaptiv

@@ -1,5 +1,7 @@
 #include "kss2-program.h"
 
+#include "../common.h"
+
 #define GET_TXT_VALUE_FROM_CHILD(parent, child) atoi(dxml_child(parent, child)->txt)
 
 bool ellement_in_array(int el, int *arr, int n)
@@ -496,6 +498,89 @@ int load(ssplan_t* planovi, stdan_t *dani, stpraznik_t *praznik, stdatum_t *datu
         printf("Failed to load time table: %d\n\r", err);
         return err;
     }
+
+    return 0;
+}
+
+static void save_sigr(dxml_t xml, const ssplan_t& plan, int current)
+{
+    auto sigr = create_tag_with_attr(xml, "SIGR", "NO", current + 1);
+    create_tag_with_txt(sigr, "name1", strdup("somename1"));
+    create_tag_with_txt(sigr, "name2", strdup("somename2"));
+    create_tag_with_txt(sigr, "enable", 0);
+
+    for (int i = 0; i < NOSIGPAR; ++i)
+    {
+        char *start = new char[7];
+        start[6] = 0;
+        char *stop = new char[6];
+        stop[5] = 0;
+
+        snprintf(start, 7, "start%d", i + 1);
+        snprintf(stop, 6, "stop%d", i + 1);
+
+        create_tag_with_txt(sigr, start, plan.Sgrupe[current].Spar[i].start);
+        create_tag_with_txt(sigr, stop, plan.Sgrupe[current].Spar[i].stop);
+    }
+}
+
+static void save_stop_point(dxml_t xml, const ssplan_t &plan, uchar current)
+{
+    auto stop_point = create_tag_with_attr(xml, "STOP_POINT", "NO", current + 1);
+
+    create_tag_with_txt(stop_point, "start", plan.stop_tacke[current].start);
+    create_tag_with_txt(stop_point, "max", plan.stop_tacke[current].max);
+    create_tag_with_txt(stop_point, "skok", plan.stop_tacke[current].skok);
+}
+
+static void save_signal_plans(dxml_t xml, const ssplan_t planovi[NOPLANS], int current)
+{
+    if (current == NOPLANS)
+        return;
+    
+    auto& plan = planovi[current];
+
+    auto sig_plan = create_tag_with_attr(xml, "SIGNAL_PLAN", "NO", current + 1);
+
+    create_tag_with_txt(sig_plan, "RBC", plan.RBC);
+    create_tag_with_txt(sig_plan, "TPP", plan.TPP);
+    create_tag_with_txt(sig_plan, "REF", plan.REF);
+
+    for (int i = 0; i < NOSIGGR; ++i)
+        save_sigr(sig_plan, plan, i);
+
+    auto stop_points = dxml_add_child(sig_plan, "STOP_POINTS", 0);
+    create_tag_with_txt(stop_points, "NUMBER_OF_STOP_POINTS", plan.no_stop_tacaka);
+
+    for (uchar i = 0; i < plan.no_stop_tacaka; ++i)
+        save_stop_point(stop_points, plan, i);
+    
+    // </STOP_POINTS>
+
+    create_tag_with_txt(sig_plan, "SIGNAL_PLAN_CRC", plan.CRC_plana);
+
+    // </SIGNAL_PLAN>
+
+    save_signal_plans(xml, planovi, current + 1);
+}
+
+void save(const ssplan_t planovi[NOPLANS], const stdan_t *dani, 
+          const stpraznik_t *praznik, stdatum_t *datumi, const char* filename)
+{
+    auto xml = dxml_new("PROGRAM_DATA");
+
+    auto sig_plans = dxml_add_child(xml, "SIGNAL_PLANS", 0);
+
+    create_tag_with_txt(sig_plans, "NUMBER_OF_SIGNAL_PLANS", NOPLANS);
+
+    save_signal_plans(sig_plans, planovi, 0);
+
+    // </SIGNAL_PLANS>
+
+    auto time_table = dxml_add_child(xml, "TIME_TABLE", 0);
+
+    // </TIME_TABLE>
+
 }
 
 } // namespace kss2_program

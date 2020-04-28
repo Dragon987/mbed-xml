@@ -10,3 +10,8 @@ void create_children(dxml_t parent, const T& ...names)
 {
     auto _ = {dxml_add_child(parent, names, 0)...};
 }
+
+void create_tag_with_txt(dxml_t parent, const char *name, char *txt);
+void create_tag_with_txt(dxml_t parent, const char *name, int val);
+void create_tag_with_txt(dxml_t parent, const char *name, unsigned char no_vals, unsigned char* vals);
+dxml_t create_tag_with_attr(dxml_t parent, const char *name, const char* attr_name, int val);

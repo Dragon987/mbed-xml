@@ -173,4 +173,4 @@ BUILD/K64F/GCC_ARM/src/config/kss2-config.o: src/config/kss2-config.cpp \
  mbed-os/platform/ScopedRomWriteLock.h mbed-os/platform/mbed_mpu_mgmt.h \
  mbed-os/hal/mpu_api.h mbed-os/platform/ScopedRamExecutionLock.h \
  mbed-os/platform/mbed_stats.h mbed-os/platform/Callback.h \
- mbed-os/platform/ScopedLock.h src/dxml/dxml.h
+ mbed-os/platform/ScopedLock.h src/dxml/dxml.h src/dxml/dxml.h

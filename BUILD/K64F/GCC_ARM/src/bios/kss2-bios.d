@@ -1,7 +1,7 @@
 BUILD/K64F/GCC_ARM/src/bios/kss2-bios.o: src/bios/kss2-bios.cpp \
- BUILD/K64F/GCC_ARM/mbed_config.h src/bios/kss2-bios.h src/common.h \
- mbed-os/mbed.h mbed-os/platform/mbed_version.h mbed-os/rtos/rtos.h \
- mbed-os/rtos/mbed_rtos_storage.h \
+ BUILD/K64F/GCC_ARM/mbed_config.h src/bios/kss2-bios.h \
+ src/bios/../common.h mbed-os/mbed.h mbed-os/platform/mbed_version.h \
+ mbed-os/rtos/rtos.h mbed-os/rtos/mbed_rtos_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/mbed_rtx_storage.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/RTX/Include/rtx_os.h \
  mbed-os/rtos/source/TARGET_CORTEX/rtx5/Include/cmsis_os2.h \
@@ -173,4 +173,4 @@ BUILD/K64F/GCC_ARM/src/bios/kss2-bios.o: src/bios/kss2-bios.cpp \
  mbed-os/platform/ScopedRomWriteLock.h mbed-os/platform/mbed_mpu_mgmt.h \
  mbed-os/hal/mpu_api.h mbed-os/platform/ScopedRamExecutionLock.h \
  mbed-os/platform/mbed_stats.h mbed-os/platform/Callback.h \
- mbed-os/platform/ScopedLock.h src/dxml/dxml.h
+ mbed-os/platform/ScopedLock.h src/bios/../dxml/dxml.h
