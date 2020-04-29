@@ -11,6 +11,7 @@
 #define  BROJ_DATUMA        8
 #define  NODNEVNIHPLANOVA   19
 #define BROJ_PRAZNIKA 16
+#define BROJ_PLANOVA_NA_PRAZNIKU 16
 
 
 typedef unsigned char uchar;
@@ -42,10 +43,10 @@ enum SIGRErrorCodes
 
 struct stparovi_t // Plans
 {  
-  uchar sat; 
-  uchar minut; 
-  uchar broj_plana; 
-} ;
+  uchar sat;
+  uchar minut;
+  uchar broj_plana;
+};
 
 struct stdatum_t
 {
@@ -55,27 +56,27 @@ struct stdatum_t
   uchar mesec;
   uchar godina;
   stparovi_t trojka[NODNEVNIHPLANOVA];
-} ;
+};
 
 struct stdan_t // Day 
-{  
+{
   uchar dan;
   uchar broj_planova;
   stparovi_t trojka[NODNEVNIHPLANOVA];
-} ;
+};
 
 struct stdatumi_t
 {  
   uchar datum;
   uchar mesec;
-} ;
+};
 
 struct stpraznik_t // Hollyday
 {  
 uchar broj_praznika;
 stdatumi_t datum[BROJ_PRAZNIKA];
 stparovi_t planovi[NODNEVNIHPLANOVA];
-} ;
+};
 
 enum TimeTableErrors
 {

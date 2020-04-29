@@ -564,6 +564,44 @@ static void save_signal_plans(dxml_t xml, const ssplan_t planovi[NOPLANS], int c
     save_signal_plans(xml, planovi, current + 1);
 }
 
+void save_day(dxml_t xml, const stdan_t& dan, uchar current)
+{
+    dxml_t day = create_tag_with_attr(xml, "DAY", "NO", current);
+
+    create_tag_with_txt(day, "NUMBER_OF_PLANS_PER_DAY", dan.broj_planova);
+
+    for (int i = 0; i < dan.broj_planova; ++i)
+    {
+        dxml_t plan = create_tag_with_attr(day, "PLAN", "NO", i + 1);
+
+        const auto& info = dan.trojka[i];
+
+        create_tag_with_txt(plan, "hour", info.sat);
+        create_tag_with_txt(plan, "minut", info.minut);
+        create_tag_with_txt(plan, "plan_number", info.broj_plana);
+    }
+
+}
+
+void save_date_number(dxml_t xml, const stdatum_t &datum, int current)
+{
+    auto date_number = create_tag_with_attr(xml, "DATE_NUMBER", "NO", current);
+
+    create_tag_with_txt(date_number, "NUMBER_OF_PLANS_PER_DATE", datum.broj_planova);
+    create_tag_with_txt(date_number, "DATE", datum.datum);
+    create_tag_with_txt(date_number, "MONTH", datum.mesec);
+    create_tag_with_txt(date_number, "YEAR", datum.godina);
+
+    for (int i = 0; i < datum.broj_planova; ++i)
+    {
+        dxml_t plan = create_tag_with_attr(date_number, "PLAN", "NO", i + 1);
+
+        create_tag_with_txt(plan, "hour", datum.trojka[i].sat);
+        create_tag_with_txt(plan, "minut", datum.trojka[i].minut);
+        create_tag_with_txt(plan, "plan_number", datum.trojka[i].broj_plana);
+    }
+}
+
 void save(const ssplan_t planovi[NOPLANS], const stdan_t *dani, 
           const stpraznik_t *praznik, stdatum_t *datumi, const char* filename)
 {
@@ -578,6 +616,43 @@ void save(const ssplan_t planovi[NOPLANS], const stdan_t *dani,
     // </SIGNAL_PLANS>
 
     auto time_table = dxml_add_child(xml, "TIME_TABLE", 0);
+
+    auto tt_day = dxml_add_child(time_table, "TIME_TABLE_DAY", 0);
+
+    for (int i = 0; i < 7; ++i)
+        save_day(tt_day, dani[i], dani[i].dan);
+
+    // </TIME_TABLE_DAY>
+
+    auto tt_hollyday = dxml_add_child(time_table, "TIME_TABLE_HOLLYDAY", 0);
+
+    create_tag_with_txt(tt_hollyday, "NUMBER_OF_HOLDAYS", praznik->broj_praznika);
+
+    for (int i = 0; i < praznik->broj_praznika; ++i)
+    {
+        auto doh = create_tag_with_attr(tt_hollyday, "DATE_OF_HOLIDAY", "NO", i + 1);
+        create_tag_with_txt(doh, "datum", praznik->datum[i].datum);
+        create_tag_with_txt(doh, "mesec", praznik->datum[i].mesec);
+    }
+
+    create_tag_with_txt(tt_hollyday, "NUMBER_OF_PLANS_PER_HOLIDAY", BROJ_PLANOVA_NA_PRAZNIKU);
+
+    for (int i = 0; i < BROJ_PLANOVA_NA_PRAZNIKU; ++i)
+    {
+        dxml_t plan = create_tag_with_attr(tt_hollyday, "PLAN", "NO", i + 1);
+        create_tag_with_txt(plan, "hour", praznik->planovi[i].sat);
+        create_tag_with_txt(plan, "minut", praznik->planovi[i].minut);
+        create_tag_with_txt(plan, "plan_number", praznik->planovi[i].broj_plana);
+    }
+
+    // </TIME_TABLE_HOLLYDAY>
+
+    dxml_t tt_date = dxml_add_child(time_table, "TIME_TABLE_DATE", 0);
+
+    for (int i = 9; i < 16; ++i)
+        save_date_number(tt_date, datumi[i - 9], i);
+
+    // </TIME_TABLE_DATE>
 
     // </TIME_TABLE>
 
