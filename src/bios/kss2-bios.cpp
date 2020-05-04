@@ -1,5 +1,7 @@
 #include "kss2-bios.h"
 
+#include "string.h"
+
 #include "../common.h"
 
 #define FILL_VALUE(parent, childName, dest, minVal, maxVal)                                   \

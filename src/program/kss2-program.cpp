@@ -1,5 +1,7 @@
 #include "kss2-program.h"
 
+#include "string.h"
+
 #include "../common.h"
 
 #define GET_TXT_VALUE_FROM_CHILD(parent, child) atoi(dxml_child(parent, child)->txt)
@@ -655,6 +657,12 @@ void save(const ssplan_t planovi[NOPLANS], const stdan_t *dani,
     // </TIME_TABLE_DATE>
 
     // </TIME_TABLE>
+
+    auto fp = fopen(filename, "w");
+    auto buff = dxml_toxml(xml);
+    fwrite(buff, sizeof (char), strlen(buff), fp);
+    free(buff);
+    fclose(fp);
 
 }
 

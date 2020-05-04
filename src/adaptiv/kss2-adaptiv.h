@@ -1,7 +1,7 @@
 #pragma once
 
 #define BR_FAZA 8
-#define BR_PRELAZA 16
+#define BR_PRELAZA 56
 #define BR_PIFOVA 8
 #define BR_FAZA_uPIFu 8
 #define BR_TABELA 16
@@ -31,6 +31,8 @@
 
 #define SET_DETCD_toCD 0x6a /*  marker za slanje stanja brojacima   */
 
+#define TOGGLE_COUNT 32
+
 using uchar = unsigned char;
 using byte = uchar;
 using schar = signed char;
@@ -58,7 +60,7 @@ struct SPrelaz /*  max broj je 16 ?????????  */
   uchar broj_sadasnje;
   uchar broj_naredne;
   uchar duzina;
-  uchar toggle[32]; /* ???!!!???*/ /*  sekunda promene 'boje' */
+  uchar toggle[TOGGLE_COUNT]; /* ???!!!???*/ /*  sekunda promene 'boje' */
   uchar CRC_prelaza_h;
   uchar CRC_prelaza_l;
 };
@@ -252,5 +254,23 @@ struct InterstageAlgo
   SA_cvor nodes[BR_CVOROVA_AF];
   short crc;
 };
+
+void load(const char* filename, 
+  SFaza faze[BR_FAZA], 
+  SPrelaz sequences[BR_PRELAZA], 
+  SPlanIzmenaFaza change_plans[BR_FAZA], 
+  DET_descr detektori[BR_DETEKTORA], 
+  uchar data[BR_RAM_LOKACIJA], 
+  algo_stage stages[BR_FAZA], 
+  InterstageAlgo interstages[BR_ALG_PRELAZA]);
+
+void save(const char* filename, 
+  const SFaza faze[BR_FAZA], 
+  const SPrelaz sequences[BR_PRELAZA], 
+  const SPlanIzmenaFaza change_plans[BR_FAZA], 
+  const DET_descr detektori[BR_DETEKTORA], 
+  const uchar data[BR_RAM_LOKACIJA], 
+  const algo_stage stages[BR_FAZA], 
+  const InterstageAlgo interstages[BR_ALG_PRELAZA]);
 
 } // namespace kss2_adaptiv

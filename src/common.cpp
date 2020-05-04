@@ -1,5 +1,7 @@
 #include "common.h"
 
+#include "string.h"
+
 using uchar = unsigned char;
 
 auto dxml_open(const char* filename) -> dxml_t {
@@ -52,4 +54,13 @@ dxml_t create_tag_with_attr(dxml_t parent, const char *name, const char* attr_na
     snprintf(txt, 3, "%d", val);
     dxml_set_attr(child, attr_name, txt);
     return child;
+}
+
+dxml_t create_tag_with_attr_and_txt(dxml_t parent, const char *name, const char* attr_name, int attr_val, int txt_val)
+{
+    auto rv = create_tag_with_attr(parent, name, attr_name, attr_val);
+    auto buff = static_cast<char*>(malloc(5 * sizeof (char)));
+    snprintf(buff, 5, "%d", txt_val);
+    dxml_set_txt(rv, buff);
+    return rv;
 }

@@ -383,7 +383,7 @@ structure DET_descr
 			<detector_description_16> 0 </detector_description_16>
 		</DETECTOR>
 
-		<DETECTOR NO="1">
+		<DETECTOR NO="2">
 			<detector_description_1> 0 </detector_description_1>
 			<detector_description_2> 0 </detector_description_2>
 			<!--  *******************************************  -->
@@ -1123,7 +1123,4 @@ structure DET_descr
 
 
 </ADAPTIV_DATA>
-
 <!--  **************   end of file   *************  -->
-
-
