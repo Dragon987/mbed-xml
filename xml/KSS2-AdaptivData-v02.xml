@@ -405,7 +405,7 @@ structure DET_descr
 	<ADAPTIV_OPERATION_VARIABLES>
 		<!--  tabela parametara "detektorskog rada"  -->
 
-		<SYSTEM_VARIABLES>
+		<!-- <SYSTEM_VARIABLES>
 			<NULA> 0 </NULA>
 			<NONEND> 0 </NONEND>
 			<SECOND> 0 </SECOND>
@@ -416,60 +416,60 @@ structure DET_descr
 			<EVENT> 0 </EVENT>
 			<VARIABLE NO="09"> 0 </VARIABLE>
 			<VARIABLE NO="10"> 0 </VARIABLE>
-			<!--  ********************  -->
+			<!  ********************  >
 			<VARIABLE NO="16"> 0 </VARIABLE>
-		</SYSTEM_VARIABLES>
+		</SYSTEM_VARIABLES> -->
 
-		<TIMEDEPENDET_VARIABLES>
+		<!-- <TIMEDEPENDET_VARIABLES> -->
 
-			<VARIABLES NO="1">
-				<SYSTEM>
-					<START_STAGE> 0 </START_STAGE>
-					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
-					<CYCLE> 0 </CYCLE>
-					<START_SECOND> 0 </START_SECOND>
-				</SYSTEM>
-				<FREE>
-					<VARIABLE NO="05"> 0 </VARIABLE>
-					<VARIABLE NO="06"> 0 </VARIABLE>
-					<!--  ********************  -->
-					<VARIABLE NO="32"> 0 </VARIABLE>
-				</FREE>
-			</VARIABLES>
+		<VARIABLES NO="1">
+			<SYSTEM>
+				<START_STAGE> 0 </START_STAGE>
+				<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+				<CYCLE> 0 </CYCLE>
+				<START_SECOND> 0 </START_SECOND>
+			</SYSTEM>
+			<FREE>
+				<VARIABLE NO="05"> 0 </VARIABLE>
+				<VARIABLE NO="06"> 0 </VARIABLE>
+				<!--  ********************  -->
+				<VARIABLE NO="32"> 0 </VARIABLE>
+			</FREE>
+		</VARIABLES>
 
-			<VARIABLES NO="2">
-				<SYSTEM>
-					<START_STAGE> 0 </START_STAGE>
-					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
-					<CYCLE> 0 </CYCLE>
-					<START_SECOND> 0 </START_SECOND>
-				</SYSTEM>
-				<FREE>
-					<VARIABLE NO="05"> 0 </VARIABLE>
-					<VARIABLE NO="06"> 0 </VARIABLE>
-					<!--  ********************  -->
-					<VARIABLE NO="32"> 0 </VARIABLE>
-				</FREE>
-			</VARIABLES>
+		<VARIABLES NO="2">
+			<SYSTEM>
+				<START_STAGE> 0 </START_STAGE>
+				<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+				<CYCLE> 0 </CYCLE>
+				<START_SECOND> 0 </START_SECOND>
+			</SYSTEM>
+			<FREE>
+				<VARIABLE NO="05"> 0 </VARIABLE>
+				<VARIABLE NO="06"> 0 </VARIABLE>
+				<!--  ********************  -->
+				<VARIABLE NO="32"> 0 </VARIABLE>
+			</FREE>
+		</VARIABLES>
 
-			<!--  ***************************************  -->
+		<!--  ***************************************  -->
 
-			<VARIABLES NO="16">
-				<SYSTEM>
-					<START_STAGE> 0 </START_STAGE>
-					<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
-					<CYCLE> 0 </CYCLE>
-					<START_SECOND> 0 </START_SECOND>
-				</SYSTEM>
-				<FREE>
-					<VARIABLE NO="05"> 0 </VARIABLE>
-					<VARIABLE NO="06"> 0 </VARIABLE>
-					<!--  *********************  -->
-					<VARIABLE NO="32"> 0 </VARIABLE>
-				</FREE>
-			</VARIABLES>
+		<VARIABLES NO="16">
+			<SYSTEM>
+				<START_STAGE> 0 </START_STAGE>
+				<COORDINATION_STAGE> 0 </COORDINATION_STAGE>
+				<CYCLE> 0 </CYCLE>
+				<START_SECOND> 0 </START_SECOND>
+			</SYSTEM>
+			<FREE>
+				<VARIABLE NO="05"> 0 </VARIABLE>
+				<VARIABLE NO="06"> 0 </VARIABLE>
+				<!--  *********************  -->
+				<VARIABLE NO="32"> 0 </VARIABLE>
+			</FREE>
+		</VARIABLES>
 
-		</TIMEDEPENDET_VARIABLES>
+		<!-- </TIMEDEPENDET_VARIABLES> -->
 
 	</ADAPTIV_OPERATION_VARIABLES>
 
@@ -1122,5 +1122,4 @@ structure DET_descr
 	</ADAPTIV_OPERATION_ALGORITHMS_FOR_INTERSTAGES>
 
 
-</ADAPTIV_DATA>
-<!--  **************   end of file   *************  -->
+</ADAPTIV_DATA><!--  **************   end of file   *************  -->

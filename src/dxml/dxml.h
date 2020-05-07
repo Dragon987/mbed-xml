@@ -1,10 +1,16 @@
+/* dxml.h
+ *
+ *   softverski modul korigovan 11.04.2020
+ *
+ */
+
 #ifndef _dxml_H
 #define _dxml_H
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
-// #include <fcntl.h>
+//#include <fcntl.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,8 +44,11 @@ dxml_t dxml_parse_str(char *s, size_t len);
 // A wrapper for dxml_parse_str() that accepts a file descriptor. First
 // attempts to mem map the file. Failing that, reads the file into memory.
 // Returns NULL on failure.
-dxml_t dxml_parse_fd(int fd);
-    
+//dxml_t dxml_parse_fd(int fd);
+
+// a wrapper for dxml_parse_fd() that accepts a file name
+dxml_t dxml_parse_file(const char *file);
+
 // Wrapper for dxml_parse_str() that accepts a file stream. Reads the entire
 // stream into memory and then parses it. For xml files, use dxml_parse_file()
 // or dxml_parse_fd()
@@ -68,7 +77,7 @@ const char *dxml_attr(dxml_t xml, const char *attr);
 
 // Traverses the dxml sturcture to retrieve a specific subtag. Takes a
 // variable length list of tag names and indexes. The argument list must be
-// terminated by either an index of -1 or an empty string tag name. Example: 
+// terminated by either an index of -1 or an empty string tag name. Example:
 // title = dxml_get(library, "shelf", 0, "book", 2, "title", -1);
 // This retrieves the title of the 3rd book on the 1st shelf of library.
 // Returns NULL if not found.
@@ -84,7 +93,7 @@ const char **dxml_pi(dxml_t xml, const char *target);
 
 // frees the memory allocated for an dxml structure
 void dxml_free(dxml_t xml);
-    
+
 // returns parser error message or empty string if none
 const char *dxml_error(dxml_t xml);
 
@@ -138,3 +147,4 @@ dxml_t dxml_insert(dxml_t xml, dxml_t dest, size_t off);
 #endif
 
 #endif // _dxml_H
+

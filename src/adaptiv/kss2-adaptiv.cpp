@@ -2,6 +2,7 @@
 
 #include <cstdarg>
 #include <string.h>
+#include <array>
 
 #include "../common.h"
 
@@ -95,7 +96,7 @@ static void load_interstage_sequences(dxml_t xml, SPrelaz sequences[BR_PRELAZA])
     {
         auto sequence = dxml_child(interstage_sequences, "INTERSTAGE_SEQUENCE");
         auto idx = atoi(dxml_attr(sequence, "NO")) - 1;
-        auto& sekvenca = sequences[idx];
+        auto &sekvenca = sequences[idx];
 
         sekvenca.broj_sadasnje = get_number_from_dxml(dxml_child(sequence, "CURRENT_STAGE"), TXT_VAL);
         sekvenca.broj_naredne = get_number_from_dxml(dxml_child(sequence, "NEXT_STAGE"), TXT_VAL);
@@ -109,9 +110,8 @@ static void load_interstage_sequences(dxml_t xml, SPrelaz sequences[BR_PRELAZA])
             sekvenca.toggle[idx] = get_number_from_dxml(toggle, TXT_VAL);
         }
 
-        fill_lower_higher_int(dxml_child(sequence, "INTERSTAGE_SEQUENCE_CRC"), sekvenca.CRC_prelaza_l, 
-            sekvenca.CRC_prelaza_h);
-        
+        fill_lower_higher_int(dxml_child(sequence, "INTERSTAGE_SEQUENCE_CRC"), sekvenca.CRC_prelaza_l,
+                              sekvenca.CRC_prelaza_h);
     }
 }
 
@@ -188,22 +188,22 @@ static void load_detector_config(dxml_t xml, DET_descr detektori[BR_DETEKTORA])
     }
 }
 
-static void load_adaptiv_operation_variables(dxml_t xml, uchar data[BR_RAM_LOKACIJA])
+static void load_adaptiv_operation_variables(dxml_t xml, uint data[16][32])
 {
-    /* Treba proveriti da li su podaci uneseni u dobrom redosledu */
-
-    dxml_t vars = dxml_child(xml, "ADAPTIV_OPERATION_VARIABLES");
-    uchar *current = data;
-    auto system_vars = dxml_child(vars, "SYSTEM_VARIABLES");
-    for (auto t = system_vars->child; t; t = t->sibling)
+    for (auto variable = dxml_child(xml, "VARIABLES"); variable; variable = variable->next)
     {
-        *(data++) = get_number_from_dxml(t, TXT_VAL);
-        if (!strcmp(t->name, "VARIABLE"))
-            for (t = t->next; t; t = t->next)
-                *(data++) = get_number_from_dxml(t, TXT_VAL);
-    }
+        int idx = get_number_from_dxml(variable, ATTR_VAL, "NO") - 1;
+        auto var = data[idx];
 
-    /* Ne razumem kako da slozim TIMEDEPENDET_VARIABLES */
+        auto system = dxml_child(variable, "SYSTEM");
+        int i = 0;
+        for (auto ordered = dxml_child(system, "START_STAGE"); ordered && i < 4; ordered = ordered->ordered, ++i)
+            var[i] = get_number_from_dxml(ordered, TXT_VAL);
+        
+        dxml_t tfree = dxml_child(variable, "FREE");
+        for (auto v = dxml_child(tfree, "VARIABLE"); v; v = v->next)
+            var[get_number_from_dxml(v, ATTR_VAL, "NO") - 1] = get_number_from_dxml(v, TXT_VAL);
+    }
 }
 
 static void load_nodes(dxml_t xml, algo_stage &stage)
@@ -277,7 +277,10 @@ static void load_op_algos_for_interstages(dxml_t xml, InterstageAlgo interstages
                                     TXT_VAL);
 }
 
-void load(const char *filename, SFaza faze[BR_FAZA], SPrelaz sequences[BR_PRELAZA], SPlanIzmenaFaza change_plans[BR_FAZA], DET_descr detektori[BR_DETEKTORA], uchar data[BR_RAM_LOKACIJA], kss2_adaptiv::algo_stage stages[BR_FAZA], InterstageAlgo interstages[BR_ALG_PRELAZA])
+void load(const char *filename, SFaza faze[BR_FAZA], SPrelaz sequences[BR_PRELAZA],
+         SPlanIzmenaFaza change_plans[BR_FAZA], DET_descr detektori[BR_DETEKTORA], 
+         uint data[16][32], 
+        kss2_adaptiv::algo_stage stages[BR_FAZA], InterstageAlgo interstages[BR_ALG_PRELAZA])
 {
     auto fp = fopen(filename, "r");
     auto xml = dxml_parse_fp(fp);
@@ -349,7 +352,7 @@ static void save_stage(dxml_t xml, const SFaza &faza, int current)
             ++idx;
 
         auto bit = i - 8 * idx;
-        auto col = (faza.boje[idx] &  (1 << (bit - 1))) >> (bit - 1);
+        auto col = (faza.boje[idx] & (1 << (bit - 1))) >> (bit - 1);
         create_tag_with_attr_and_txt(colors, "collor_of_signal_group", "NO", i + 1, col);
     }
 
@@ -369,10 +372,8 @@ static void save_interstage(dxml_t xml, const SPrelaz &prelaz, int current)
     dxml_t toggle_secs = dxml_add_child(sequence, "TOGGLE_SECONDS", 0);
     for (int i = 0; i < TOGGLE_COUNT; ++i)
         create_tag_with_attr_and_txt(toggle_secs, "toggle_sec", "NO", i + 1, prelaz.toggle[i]);
-    
-    create_tag_with_txt(sequence, "INTERSTAGE_SEQUENCE_CRC", int_from_higher_lower(
-        prelaz.CRC_prelaza_h, prelaz.CRC_prelaza_l
-    ));
+
+    create_tag_with_txt(sequence, "INTERSTAGE_SEQUENCE_CRC", int_from_higher_lower(prelaz.CRC_prelaza_h, prelaz.CRC_prelaza_l));
 }
 
 static void save_stage_change_plan(dxml_t xml, const SPlanIzmenaFaza &plan, int current)
@@ -389,20 +390,16 @@ static void save_stage_change_plan(dxml_t xml, const SPlanIzmenaFaza &plan, int 
     {
         auto stage = create_tag_with_attr(stages, "STAGE", "NO", i + 1);
         create_tag_with_txt(stage, "stage_number", plan.faze[i].broj);
-        create_tag_with_txt(stage, "stage_duration", int_from_higher_lower(
-            plan.faze[i].opt_h, plan.faze[i].opt_l
-        ));
+        create_tag_with_txt(stage, "stage_duration", int_from_higher_lower(plan.faze[i].opt_h, plan.faze[i].opt_l));
     }
-    create_tag_with_txt(change_plan, "STAGE_CHANGE_PLAN_CRC", int_from_higher_lower(
-            plan.CRC_PlanIzmena_h, plan.CRC_PlanIzmena_l
-        ));
+    create_tag_with_txt(change_plan, "STAGE_CHANGE_PLAN_CRC", int_from_higher_lower(plan.CRC_PlanIzmena_h, plan.CRC_PlanIzmena_l));
 }
 
 static void save_detector(dxml_t xml, const DET_descr &detektor, int current)
 {
     auto detector = create_tag_with_attr(xml, "DETECTOR", "NO", current + 1);
 
-    const char* base_tag_str = "detector_description_";
+    const char *base_tag_str = "detector_description_";
     auto base_len = strlen(base_tag_str);
 
     for (int i = 0; i < 16; ++i)
@@ -412,13 +409,32 @@ static void save_detector(dxml_t xml, const DET_descr &detektor, int current)
             ++len;
         else
             len += 2;
-        
-        auto tag_name = (char*)malloc(len * sizeof (char));
+
+        auto tag_name = (char *)malloc(len * sizeof(char));
         memset(tag_name, 0, len);
         snprintf(tag_name, len, base_tag_str, i + 1);
 
         create_tag_with_txt(detector, tag_name, detektor.detector_description[i]);
     }
+}
+
+static void save_op_variable(dxml_t xml, const uint *variable, int current)
+{
+    static const std::array<const char *, 4> system_vars = {"START_STAGE",
+                                                            "COORDINATION_STAGE",
+                                                            "CYCLE",
+                                                            "START_SECOND"};
+
+    auto variables = create_tag_with_attr(xml, "VARIABLES", "NO", current + 1);
+    auto system = dxml_add_child(variables, "SYSTEM", 0);
+    int i = 0;
+    for (const auto& var_name : system_vars)
+        create_tag_with_txt(system, var_name, variable[i++]);
+    
+    auto tfree = dxml_add_child(variables, "FREE", 0);
+
+    for (int i = 4; i < 32; ++i)
+        create_tag_with_attr_and_txt(tfree, "VARIABLE", "NO", i + 1, variable[i]);
 }
 
 static void save_algo_stage(dxml_t xml, const algo_stage &faza, int current)
@@ -491,7 +507,6 @@ static void save_algo_interstage(dxml_t xml, const InterstageAlgo &prelaz, int c
     }
 
     create_tag_with_txt(interstage, "CRC_OF_STAGE_ALGORITHM", prelaz.crc); // Nemam strukturu kojom mogu da popunim ovo polje
-
 }
 
 void save(const char *filename,
@@ -499,7 +514,7 @@ void save(const char *filename,
           const SPrelaz sequences[BR_PRELAZA],
           const SPlanIzmenaFaza change_plans[BR_FAZA],
           const DET_descr detektori[BR_DETEKTORA],
-          const uchar data[BR_RAM_LOKACIJA],
+          const uint data[16][32],
           const algo_stage stages[BR_FAZA],
           const InterstageAlgo interstages[BR_ALG_PRELAZA])
 {
@@ -538,7 +553,8 @@ void save(const char *filename,
 
     CREATE_TAG(xml, adaptiv_operation_variables, "ADAPTIV_OPERATION_VARIABLES");
 
-    // ????????? nznm kako ovo treba da se rasporedi
+    for (int i = 0; i < 16; ++i)
+        save_op_variable(adaptiv_operation_variables, data[i], i);
 
     // </ADAPTIV_OPERATION_VARIABLES>
 

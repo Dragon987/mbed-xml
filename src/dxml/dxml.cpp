@@ -1,3 +1,6 @@
+
+// DXML.CPP  korigovan 11.04.2020  !!!
+
 #define dxml_NOMMAP
 
 #include <stdlib.h>
@@ -5,16 +8,24 @@
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>
-#include <unistd.h>
-#include <sys/types.h>
+//#include <unistd.h>
+//#include <sys/types.h>
 #ifndef dxml_NOMMAP
 #include <sys/mman.h>
 #endif // dxml_NOMMAP
-#include <sys/stat.h>
+//#include <stat.h>
 #include "dxml.h"
 
 #define dxml_WS   "\t\r\n "  // whitespace
 #define dxml_ERRL 128        // maximum error string length
+
+char* strdup(const char* literal)
+{
+    int l_len = strlen(literal);
+    char* n = (char*)malloc(l_len + 1);
+    strncpy(n, literal, l_len + 1);
+    return n;
+}
 
 typedef struct dxml_root *dxml_root_t;
 struct dxml_root {       // additional data for the root tag
@@ -74,7 +85,7 @@ dxml_t dxml_vget(dxml_t xml, va_list ap)
     int idx = -1;
 
     if (name && *name) {
-        idx = va_arg(ap, int);    
+        idx = va_arg(ap, int);
         xml = dxml_child(xml, name);
     }
     return (idx < 0) ? xml : dxml_vget(dxml_idx(xml, idx), ap);
@@ -82,7 +93,7 @@ dxml_t dxml_vget(dxml_t xml, va_list ap)
 
 // Traverses the xml tree to retrieve a specific subtag. Takes a variable
 // length list of tag names and indexes. The argument list must be terminated
-// by either an index of -1 or an empty string tag name. Example: 
+// by either an index of -1 or an empty string tag name. Example:
 // title = dxml_get(library, "shelf", 0, "book", 2, "title", -1);
 // This retrieves the title of the 3rd book on the 1st shelf of library.
 // Returns NULL if not found.
@@ -116,7 +127,7 @@ dxml_t dxml_err(dxml_root_t root, char *s, const char *err, ...)
     va_list ap;
     int line = 1;
     char *t, fmt[dxml_ERRL];
-    
+
     for (t = root->s; t < s; t++) if (*t == '\n') line++;
     snprintf(fmt, dxml_ERRL, "[error near line %d]: %s", line, err);
 
@@ -144,7 +155,7 @@ char *dxml_decode(char *s, char **ent, char t)
             if (*s == '\n') memmove(s, (s + 1), strlen(s));
         }
     }
-    
+
     for (s = r; ; ) {
         while (*s && *s != '&' && (*s != '%' || t != '%') && !isspace(*s)) s++;
 
@@ -199,7 +210,7 @@ char *dxml_decode(char *s, char **ent, char t)
 void dxml_open_tag(dxml_root_t root, char *name, char **attr)
 {
     dxml_t xml = root->cur;
-    
+
     if (xml->name) xml = dxml_add_child(xml, name, strlen(xml->txt));
     else xml->name = name; // first open tag
 
@@ -298,7 +309,7 @@ short dxml_internal_dtd(dxml_root_t root, char *s, size_t len)
 {
     char q, *c, *t, *n = NULL, *v, **ent, **pe;
     int i, j;
-    
+
     pe = (char**)memcpy(malloc(sizeof(dxml_NIL)), dxml_NIL, sizeof(dxml_NIL));
 
     for (s[len] = '\0'; s; ) {
@@ -379,7 +390,7 @@ short dxml_internal_dtd(dxml_root_t root, char *s, size_t len)
                 root->attr[i][j + 2] = c; // is it cdata?
                 root->attr[i][j + 1] = (v) ? dxml_decode(v, root->ent, *c)
                                            : NULL;
-                root->attr[i][j] = n; // attribute name 
+                root->attr[i][j] = n; // attribute name
             }
         }
         else if (! strncmp(s, "<!--", 4)) s = strstr(s + 4, "-->"); // comments
@@ -432,7 +443,7 @@ char *dxml_str2utf8(char **s, size_t *len)
 void dxml_free_attr(char **attr) {
     int i = 0;
     char *m;
-    
+
     if (! attr || attr == dxml_NIL) return; // nothing to free
     while (attr[i]) i += 2; // find end of attribute list
     m = attr[i + 1]; // list of which names and values are malloced
@@ -455,7 +466,7 @@ dxml_t dxml_parse_str(char *s, size_t len)
     if (! len) return dxml_err(root, NULL, "root tag missing");
     root->u = dxml_str2utf8(&s, &len); // convert utf-16 to utf-8
     root->e = (root->s = s) + len; // record start and end of work area
-    
+
     e = s[len - 1]; // save end char
     s[len - 1] = '\0'; // turn end char into null terminator
 
@@ -465,14 +476,14 @@ dxml_t dxml_parse_str(char *s, size_t len)
     for (; ; ) {
         attr = (char **)dxml_NIL;
         d = ++s;
-        
+
         if (isalpha(*s) || *s == '_' || *s == ':' || *s < '\0') { // new tag
             if (! root->cur)
                 return dxml_err(root, d, "markup outside of root element");
 
             s += strcspn(s, dxml_WS "/>");
             while (isspace(*s)) *(s++) = '\0'; // null terminate tag name
-  
+
             if (*s && *s != '/' && *s != '>') // find tag in default attr list
                 for (i = 0; (a = root->attr[i]) && strcmp(a[0], d); i++);
 
@@ -487,7 +498,7 @@ dxml_t dxml_parse_str(char *s, size_t len)
                 attr[l] = s; // set attribute name
 
                 s += strcspn(s, dxml_WS "=/>");
-                if (*s == '=' || isspace(*s)) { 
+                if (*s == '=' || isspace(*s)) {
                     *(s++) = '\0'; // null terminate tag attribute name
                     q = *(s += strspn(s, dxml_WS "="));
                     if (q == '"' || q == '\'') { // attribute value
@@ -525,7 +536,7 @@ dxml_t dxml_parse_str(char *s, size_t len)
             }
             else {
                 if (l) dxml_free_attr(attr);
-                return dxml_err(root, d, "missing >"); 
+                return dxml_err(root, d, "missing >");
             }
         }
         else if (*s == '/') { // close tag
@@ -545,7 +556,7 @@ dxml_t dxml_parse_str(char *s, size_t len)
             else return dxml_err(root, d, "unclosed <![CDATA[");
         }
         else if (! strncmp(s, "!DOCTYPE", 8)) { // dtd
-            for (l = 0; *s && ((! l && *s != '>') || (l && (*s != ']' || 
+            for (l = 0; *s && ((! l && *s != '>') || (l && (*s != ']' ||
                  *(s + strspn(s + 1, dxml_WS) + 1) != '>')));
                  l = (*s == '[') ? 1 : l) s += strcspn(s + 1, "[]>") + 1;
             if (! *s && e != '>')
@@ -555,12 +566,12 @@ dxml_t dxml_parse_str(char *s, size_t len)
         }
         else if (*s == '?') { // <?...?> processing instructions
             do { s = strchr(s, '?'); } while (s && *(++s) && *s != '>');
-            if (! s || (! *s && e != '>')) 
+            if (! s || (! *s && e != '>'))
                 return dxml_err(root, d, "unclosed <?");
             else dxml_proc_inst(root, d + 1, s - d - 2);
         }
         else return dxml_err(root, d, "unexpected <");
-        
+
         if (! s || ! *s) break;
         *s = '\0';
         d = ++s;
@@ -597,38 +608,38 @@ dxml_t dxml_parse_fp(FILE *fp)
     root->len = -1; // so we know to free s in dxml_free()
     return &root->xml;
 }
-
-// A wrapper for dxml_parse_str() that accepts a file descriptor. First
-// attempts to mem map the file. Failing that, reads the file into memory.
-// Returns NULL on failure.
-dxml_t dxml_parse_fd(int fd)
-{
-    dxml_root_t root;
-    struct stat st;
-    size_t l;
-    void *m;
-
-    if (fd < 0) return NULL;
-    fstat(fd, &st);
-
-#ifndef dxml_NOMMAP
-    l = (st.st_size + sysconf(_SC_PAGESIZE) - 1) & ~(sysconf(_SC_PAGESIZE) -1);
-    if ((m = mmap(NULL, l, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0)) !=
-        MAP_FAILED) {
-        madvise(m, l, MADV_SEQUENTIAL); // optimize for sequential access
-        root = (dxml_root_t)dxml_parse_str(m, st.st_size);
-        madvise(m, root->len = l, MADV_NORMAL); // put it back to normal
-    }
-    else { // mmap failed, read file into memory
-#endif // dxml_NOMMAP
-        l = read(fd, m = malloc(st.st_size), st.st_size);
-        root = (dxml_root_t)dxml_parse_str((char*)m, l);
-        root->len = -1; // so we know to free s in dxml_free()
-#ifndef dxml_NOMMAP
-    }
-#endif // dxml_NOMMAP
-    return &root->xml;
-}
+//
+//// A wrapper for dxml_parse_str() that accepts a file descriptor. First
+//// attempts to mem map the file. Failing that, reads the file into memory.
+//// Returns NULL on failure.
+//dxml_t dxml_parse_fd(int fd)
+//{
+//    dxml_root_t root;
+//    struct stat st;
+//    size_t l;
+//    void *m;
+//
+//    if (fd < 0) return NULL;
+//    fstat(fd, &st);
+//
+//#ifndef dxml_NOMMAP
+//    l = (st.st_size + sysconf(_SC_PAGESIZE) - 1) & ~(sysconf(_SC_PAGESIZE) -1);
+//    if ((m = mmap(NULL, l, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0)) !=
+//        MAP_FAILED) {
+//        madvise(m, l, MADV_SEQUENTIAL); // optimize for sequential access
+//        root = (dxml_root_t)dxml_parse_str(m, st.st_size);
+//        madvise(m, root->len = l, MADV_NORMAL); // put it back to normal
+//    }
+//    else { // mmap failed, read file into memory
+//#endif // dxml_NOMMAP
+//        l = read(fd, m = malloc(st.st_size), st.st_size);
+//        root = (dxml_root_t)dxml_parse_str((char*)m, l);
+//        root->len = -1; // so we know to free s in dxml_free()
+//#ifndef dxml_NOMMAP
+//    }
+//#endif // dxml_NOMMAP
+//    return &root->xml;
+//}
 
 // Encodes ampersand sequences appending the results to *dst, reallocating *dst
 // if length excedes max. a is non-zero for attribute encoding. Returns *dst
@@ -636,7 +647,7 @@ char *dxml_ampencode(const char *s, size_t len, char **dst, size_t *dlen,
                       size_t *max, short a)
 {
     const char *e;
-    
+
     for (e = s + len; s != e; s++) {
         while (*dlen + 10 > *max) *dst = (char*)realloc(*dst, *max += dxml_BUFSIZE);
 
@@ -697,7 +708,7 @@ char *dxml_toxml_r(dxml_t xml, char **s, size_t *len, size_t *max,
 
     *s = (xml->child) ? dxml_toxml_r(xml->child, s, len, max, 0, attr) //child
                       : dxml_ampencode(xml->txt, -1, s, len, max, 0);  //data
-    
+
     while (*len + strlen(xml->name) + 4 > *max) // reallocate s
         *s = (char*)realloc(*s, *max += dxml_BUFSIZE);
 
@@ -775,7 +786,7 @@ void dxml_free(dxml_t xml)
             for (j = 1; root->pi[i][j]; j++);
             free(root->pi[i][j + 1]);
             free(root->pi[i]);
-        }            
+        }
         if (root->pi[0]) free(root->pi); // free processing instructions
 
         if (root->len == -1) free(root->m); // malloced xml data
@@ -803,7 +814,7 @@ dxml_t dxml_new(const char *name)
 {
     static char *ent[] = { "lt;", "&#60;", "gt;", "&#62;", "quot;", "&#34;",
                            "apos;", "&#39;", "amp;", "&#38;", NULL };
-    dxml_root_t root = (dxml_root_t)memset(malloc(sizeof(struct dxml_root)), 
+    dxml_root_t root = (dxml_root_t)memset(malloc(sizeof(struct dxml_root)),
                                              '\0', sizeof(struct dxml_root));
     root->xml.name = (char *)name;
     root->cur = &root->xml;
@@ -914,10 +925,12 @@ dxml_t dxml_set_attr(dxml_t xml, const char *name, const char *value)
     if (value) xml->attr[l + 1] = (char *)value; // set attribute value
     else { // remove attribute
         if (xml->attr[c + 1][l / 2] & dxml_NAMEM) free(xml->attr[l]);
-        memmove(xml->attr + l, xml->attr + l + 2, (c - l + 2) * sizeof(char*));
+   //     memmove(xml->attr + l, xml->attr + l + 2, (c - l + 2) * sizeof(char*));
+        memmove(xml->attr + l, xml->attr + l + 2, (c - l) * sizeof(char*));  // promenio BL!!!
+        c -= 2; // dodao BL!!!
         xml->attr = (char**)realloc(xml->attr, (c + 2) * sizeof(char *));
         memmove(xml->attr[c + 1] + (l / 2), xml->attr[c + 1] + (l / 2) + 1,
-                (c / 2) - (l / 2)); // fix list of which name/vals are malloced
+         /*promenio BL!!! */     ((c + 2)/2) - (l / 2) /*(c / 2) - (l / 2)*/); // fix list of which name/vals are malloced
     }
     xml->flags &= ~dxml_DUP; // clear strdup() flag
     return xml;
@@ -958,7 +971,7 @@ dxml_t dxml_cut(dxml_t xml)
 
             while (cur->next && cur->next != xml) cur = cur->next;
             if (cur->next) cur->next = cur->next->next; // patch next list
-        }        
+        }
     }
     xml->ordered = xml->sibling = xml->next = NULL;
     return xml;

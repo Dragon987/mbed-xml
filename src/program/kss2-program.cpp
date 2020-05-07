@@ -47,8 +47,8 @@ int load_plan(ssplan_t *splan, dxml_t signal_plan)
         if (!start1 || !stop1)
             return SIGR_START_STOP; // No start1 or stop1
 
-        sspar_t sp1 = {atoi(start1->txt),
-                       atoi(stop1->txt)};
+        sspar_t sp1 = {(uchar)atoi(start1->txt),
+                       (uchar)atoi(stop1->txt)};
 
         for (int i = 1; i < NOSIGPAR; i++)
         {
@@ -60,14 +60,14 @@ int load_plan(ssplan_t *splan, dxml_t signal_plan)
             sspar_t sp;
 
             if (start && stop)
-                sp = (sspar_t){atoi(start->txt),
-                               atoi(stop->txt)};
+                sp = (sspar_t){(uchar)atoi(start->txt),
+                               (uchar)atoi(stop->txt)};
             else if (start)
-                sp = (sspar_t){atoi(start->txt),
+                sp = (sspar_t){(uchar)atoi(start->txt),
                                0};
             else if (stop)
                 sp = (sspar_t){0,
-                               atoi(stop->txt)};
+                               (uchar)atoi(stop->txt)};
             else
                 sp = (sspar_t){0, 0};
             splan->Sgrupe[atoi(dxml_attr(sigr, "NO")) - 1].Spar[i] = sp;
