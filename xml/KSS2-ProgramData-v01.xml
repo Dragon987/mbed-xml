@@ -90,9 +90,9 @@
 
 		<SIGNAL_PLAN NO="1">
 
-			<RBC> 0 </RBC>
-			<TPP> 0 </TPP>
-			<REF> 0 </REF>
+			<RBC> 1 </RBC>
+			<TPP> 2 </TPP>
+			<REF> 3 </REF>
 
 			<NUMBER_OF_SIGNAL_GROUPS> 0 </NUMBER_OF_SIGNAL_GROUPS>
 

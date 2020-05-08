@@ -254,5 +254,5 @@ auto save(const char *fileName,
                       const SSPIfolder *sspi,
                       const SIOSijl *ios,
                       const SConflP *cc,
-                      const uchar *mg) -> int;
+                      const uchar *mg) -> void;
 }

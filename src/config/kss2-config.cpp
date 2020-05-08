@@ -660,7 +660,7 @@ auto save(const char *fileName,
           const SSPIfolder *sspi,
           const SIOSijl ios[NO_IO_MAX],
           const SConflP cc[NO_CONFL_COUPLES_MAX],
-          const uchar *mg) -> int
+          const uchar *mg) -> void
 {
     dxml_t xml = dxml_new("CONFIG_DATA");
 
