@@ -2,6 +2,8 @@
 
 #include <initializer_list>
 
+extern char* strdup(const char*);
+
 #include "dxml/dxml.h"
 
 auto dxml_open(const char* filename) -> dxml_t;
